@@ -1,0 +1,32 @@
+.header-contact-info {
+  background-color: var(--color-primary);
+  padding: 1.6rem 3.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-info-address {
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.contact-info-address div {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: var(--color-light);
+  gap: 1.6rem;
+}
+
+.header-icon {
+  color: var(--color-light);
+}
+
+.contact-info-social {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: var(--color-light);
+  gap: 1.6rem;
+}
