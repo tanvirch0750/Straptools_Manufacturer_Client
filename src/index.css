@@ -87,6 +87,14 @@ body {
   color: var(--color-slate-dark);
 }
 
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
 strong {
   font-weight: 500;
 }
@@ -144,6 +152,23 @@ h2 {
 h3 {
   font-size: 2.4rem;
   margin-bottom: 3.2rem;
+}
+
+.btn {
+  border: none;
+  border: 1px solid var(--color-secondary);
+  padding: 1.4rem 3.2rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-full {
+  background-color: var(--color-secondary);
+  color: var(--color-light);
+}
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-secondary);
 }
 
 @media only screen and (max-width: 1000px) {

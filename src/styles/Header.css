@@ -1,0 +1,39 @@
+.nav {
+  height: 7.2rem;
+  background-color: var(--color-slate-light);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-logo h2 a {
+  font-size: 2.4rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.nav-navigation ul {
+  display: flex;
+  align-items: center;
+  gap: 2.6rem;
+}
+
+.nav-navigation a {
+  font-size: 1.8rem;
+  color: var(--color-slate-dark);
+  font-weight: 500;
+  transition: 300ms;
+}
+
+.nav-navigation li:hover a {
+  color: var(--color-secondary);
+}
+
+.nav-button {
+  display: flex;
+  gap: 1.6rem;
+}
