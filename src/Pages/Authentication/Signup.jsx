@@ -1,6 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useEffect, useState } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
@@ -13,6 +16,7 @@ const SignUp = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -29,6 +33,7 @@ const SignUp = () => {
 
   const formSchema = Yup.object().shape({
     email: Yup.string().email().required("Please Provide a valid email"),
+    name: Yup.string().required("Your name is required"),
     password: Yup.string()
       .required("Password is mendatory")
       .min(3, "Password must be at 3 char long"),
@@ -44,8 +49,9 @@ const SignUp = () => {
     formState: { errors },
   } = useForm(formOptions);
 
-  const onSubmit = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
   };
 
   const navigate = useNavigate();
@@ -65,6 +71,15 @@ const SignUp = () => {
         <div className="form-container">
           <h2>Registration</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-control">
+              <label htmlFor="name">Your Name:</label>
+              <input
+                {...register("name")}
+                type="name"
+                placeholder="Enter your name"
+              />
+              <p className="error-message">{errors.name?.message}</p>
+            </div>
             <div className="form-control">
               <label htmlFor="name">Your email:</label>
               <input
