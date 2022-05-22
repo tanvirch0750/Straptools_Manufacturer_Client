@@ -23,5 +23,5 @@
   width: 100%;
   background-color: var(--color-primary-light);
   color: var(--color-light);
-  padding: 2rem 2rem;
+  padding: 2rem 2rem !important;
 }

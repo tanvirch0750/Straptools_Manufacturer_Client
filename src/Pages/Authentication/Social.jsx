@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
-import auth from "../Firebase.init";
-import "../styles/Social.css";
-import Loading from "./Loading";
+import Loading from "../../components/Loading";
+import auth from "../../Firebase.init";
+import "../../styles/Social.css";
 
 const Social = ({ text }) => {
   const [customError, setCustomError] = useState("");

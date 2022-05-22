@@ -6,10 +6,10 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
-import Social from "../../components/Social";
 import auth from "../../Firebase.init";
 import "../../styles/Form.css";
 import "../../styles/Login.css";
+import Social from "./Social";
 
 const Login = () => {
   const [customError, setCustomError] = useState("");
