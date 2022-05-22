@@ -13,12 +13,12 @@
     rgba(0, 0, 0, 0.15) 100%
   );
 }
-div.container {
+.loading-inner {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-div > div {
+.loading-inner > div {
   width: 3vw;
   height: 3vw;
   border-radius: 100%;

@@ -1,0 +1,27 @@
+.social {
+  max-width: 65rem;
+}
+
+.or-separator {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 2rem;
+  margin: 1.6rem 0;
+}
+.or-separator span {
+  color: var(--color-priamry);
+  font-size: 1.6rem;
+}
+.or-separator div {
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-secondary);
+}
+
+.social-btn {
+  width: 100%;
+  background-color: var(--color-primary-light);
+  color: var(--color-light);
+  padding: 2rem 2rem;
+}
