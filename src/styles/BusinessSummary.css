@@ -1,0 +1,104 @@
+/* .section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, $primary-color-light, $primary-color-dark);
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
+}
+*/
+
+.summary-section {
+  margin-top: 3.2rem;
+  padding: 9.6rem 0;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+}
+
+.summary-inner {
+  background-image: linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.9) 50%,
+      transparent 50%
+    ),
+    url(../assets/images/banner/summary-banner.jpg);
+
+  background-size: cover;
+  background-position: right;
+
+  /* box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); */
+
+  /* @include respond(tab-land) {
+    background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 65%, transparent 65%), url(../img/nat-10.jpg);
+    background-size: cover;
+  }
+
+  @include respond(tab-port) {
+    background-image: linear-gradient(to right, rgba($color-white, .9) 0%, rgba($color-white, .9) 100%), url(../img/nat-10.jpg);
+    background-size: cover;
+  } */
+
+  /* &__form {
+    width: 50%;
+    padding: 6rem;
+
+    @include respond(tab-land) {
+      width: 65%;
+    }
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+  } */
+}
+
+.summary-content {
+  width: 50%;
+  padding: 6rem;
+}
+
+.summary-content h2 {
+  font-size: 4.4rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: 3.2rem;
+}
+
+.summary-content h3 {
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+
+.summary-content p {
+  font-size: 1.6rem;
+}
+
+.summary-numbers {
+  background-color: var(--color-secondary);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 6rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+}
+
+.summary-number {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+  text-align: center;
+}
+
+.summary-number p {
+  font-size: 2rem;
+  color: var(--color-light);
+}
+
+.summary-number img {
+  width: 7rem;
+}
