@@ -31,11 +31,11 @@ const BusinessSummary = () => {
           </div>
           <div className="summary-number">
             <img src={icon2} alt="icon" />
-            <p>Distributors all around the world</p>
+            <p>500+ Distributors</p>
           </div>
           <div className="summary-number">
             <img src={icon3} alt="icon" />
-            <p>Technical Support</p>
+            <p>24/7 Technical Support</p>
           </div>
           <div className="summary-number">
             <img src={icon4} alt="icon" />
