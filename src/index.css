@@ -99,6 +99,17 @@ strong {
   font-weight: 500;
 }
 
+.section-heading {
+  text-align: center;
+}
+
+.section-heading h2 {
+  color: var(--color-primary-light);
+  font-weight: 700;
+  font-size: 4.4rem;
+  text-transform: capitalize;
+}
+
 /* ::-webkit-scrollbar {
   width: 12px;
 } */

@@ -2,21 +2,10 @@
   padding: 9.6rem 0;
 }
 
-.feature-products .section-heading {
-  text-align: center;
-}
-
-.section-heading h2 {
-  color: var(--color-primary-light);
-  font-weight: 700;
-  font-size: 4.4rem;
-}
-
 .feature-products-container {
   margin-top: 6.4rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-
   grid-gap: 6rem;
 }
 
