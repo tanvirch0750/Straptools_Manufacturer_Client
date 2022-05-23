@@ -10,6 +10,9 @@ import Purchase from "./Pages/Purchase";
 
 function App() {
   const location = useLocation();
+
+  const locationPath = location.pathname === "/dashboard";
+
   return (
     <>
       <Header />
@@ -34,7 +37,7 @@ function App() {
           }
         ></Route>
       </Routes>
-      {!location.pathname === "/dashboard" && <Footer />}
+      {!locationPath && <Footer />}
     </>
   );
 }
