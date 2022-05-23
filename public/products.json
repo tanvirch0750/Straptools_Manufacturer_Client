@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Strap 20 - Plastic",
+    "image": "https://i.ibb.co/7V3DzX3/product-plastic.png",
+    "description": "Battery strapping tool for 13mm and 16mm PP and PET strap Manual Operating Mode",
+    "minimumOrder": 50,
+    "quantity": 500,
+    "availableQuantity": 500,
+    "pricePerUnit": 800,
+    "category": "plastic",
+    "fullDescription": "Reliable, efficient and effective, ITA 20 is a medium-low tension strapping tool suitable for 13mm and 16mm, PP and PET strap, operating in manual tensioning mode. Easy to be used, even with one hand, ITA 20 finds application in many fields like cartons, glass and ceramic industries, food packaging, fruit and vegetable and many other sectors."
+  },
+  {
+    "name": "Strap 41 - Steel",
+    "image": "https://i.ibb.co/G0XdZx0/product-steel-1.png",
+    "description": "Strap 41 is the combined pneumatic strapping tool for 19mm / 25mm / 32mm steel straps.",
+    "minimumOrder": 70,
+    "quantity": 500,
+    "availableQuantity": 500,
+    "pricePerUnit": 600,
+    "category": "steel",
+    "fullDescription": "The tool is equipped with 2 operating buttons, to allow an Automatic tensioning of Your steel strap. strap 41 is available in two motor versions (9000 N and 15000 N) to provide the most suitable and adjustable tension for Your application. Easy to be used, strap 41 is already equipped with its suspension hook to grant a lighter operation mode and to arrange a perfect double notch seal joint."
+  },
+  {
+    "name": "Strap 30 - Textile",
+    "image": "https://i.ibb.co/rQTNn2V/product-textile-1.png",
+    "description": "TA 70 is the pneumatic tensioner suitable for all textile straps, up to 40 mm in width.",
+    "minimumOrder": 40,
+    "quantity": 500,
+    "availableQuantity": 500,
+    "pricePerUnit": 800,
+    "category": "textile",
+    "fullDescription": "Studied with a design that allows the easiest strapping operation, strap 30 is powerful, fast and robust, with a tensioning force up to 15000N. The tensioner is equipped with the integrated strap cutting unit and is manufactured to be durable and with very low maintenance required."
+  }
+]

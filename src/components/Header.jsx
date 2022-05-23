@@ -12,7 +12,6 @@ const Header = () => {
     signOut(auth);
   };
 
-  console.log(user);
   return (
     <header>
       <HeaderContact />

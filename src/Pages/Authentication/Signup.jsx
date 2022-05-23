@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Loading from "../../components/Loading";
 import auth from "../../Firebase.init";
+import useToken from "../../hooks/useToken";
 import Social from "./Social";
 
 const SignUp = () => {
@@ -17,6 +18,7 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [token] = useToken(user);
 
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -56,10 +58,10 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user]);
+  }, [token]);
 
   if (loading) {
     return <Loading />;

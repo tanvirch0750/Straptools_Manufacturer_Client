@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import auth from "../../Firebase.init";
+import useToken from "../../hooks/useToken";
 import "../../styles/Form.css";
 import "../../styles/Login.css";
 import Social from "./Social";
@@ -17,13 +18,13 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, errorReset] =
     useSendPasswordResetEmail(auth);
-
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm({});
+  const [token] = useToken(user);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location?.state?.from?.pathname || "/";
@@ -45,10 +46,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user]);
+  }, [token]);
 
   const email = watch("email");
   function validateEmail() {

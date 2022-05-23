@@ -1,0 +1,40 @@
+.product {
+  background-color: rgba(3, 69, 107, 0.034);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.4rem;
+  transition: 300ms ease-in-out;
+}
+
+.product h3 {
+  font-size: 3rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.product img {
+  width: 100%;
+}
+
+.product-description {
+  font-size: 1.6rem;
+  margin-bottom: 0;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.product-content {
+  margin-top: 1.6rem;
+}
+
+.product-content p {
+  margin-bottom: 0.2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.product button {
+  margin-top: 2.4rem;
+}

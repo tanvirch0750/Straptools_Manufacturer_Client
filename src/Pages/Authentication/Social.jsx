@@ -3,11 +3,13 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import auth from "../../Firebase.init";
+import useToken from "../../hooks/useToken";
 import "../../styles/Social.css";
 
 const Social = ({ text }) => {
   const [customError, setCustomError] = useState("");
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [token] = useToken(user);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
