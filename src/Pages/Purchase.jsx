@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
+import auth from "../Firebase.init";
 import "../styles/Purchase.css";
 
 const Purchase = () => {
   const { id } = useParams();
+  const [user] = useAuthState(auth);
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState(null);
+  const [disable, setDisable] = useState(false);
+  const [error, setError] = useState("");
 
   const { data: product, isLoading } = useQuery(["purchase", id], () =>
     fetch(`http://localhost:5000/products/${id}`, {
@@ -14,12 +21,80 @@ const Purchase = () => {
       },
     }).then((res) => res.json())
   );
+  const [inputQuantity, setInputQuantity] = useState(+product?.minimumOrder);
+
+  console.log(disable);
+  const handlePurchase = (e) => {
+    e.preventDefault();
+    if (inputQuantity > product.availableQuantity) {
+      setError(`Sorry only ${product.availableQuantity} product are available`);
+      setDisable(true);
+    } else if (inputQuantity < product.minimumOrder) {
+      setError(`You have to purchase at least ${product.minimumOrder} product`);
+      setDisable(true);
+    } else {
+      const purchasedProduct = {
+        id: product._id,
+        name: product.name,
+        quantity: inputQuantity,
+        userName: user.displayName,
+        email: user.email,
+        address: address,
+        phone: phone,
+        price: product.pricePerUnit,
+        totalPrice: inputQuantity * product.pricePerUnit,
+      };
+      console.log(purchasedProduct);
+      setDisable(false);
+      setError("");
+    }
+  };
+
+  const handleInputQuantityChange = (e) => {
+    setInputQuantity(+e.target.value);
+  };
+
+  useEffect(() => {
+    setInputQuantity(+product?.minimumOrder);
+  }, [product]);
+
+  useEffect(() => {
+    console.log(inputQuantity, product?.minimumOrder);
+    if (inputQuantity > product?.availableQuantity) {
+      setError(`Sorry only ${product.availableQuantity} product are available`);
+      setDisable(true);
+    } else if (inputQuantity < product?.minimumOrder) {
+      setError(`You have to purchase at least ${product.minimumOrder} product`);
+      setDisable(true);
+    } else {
+      setDisable(false);
+      setError("");
+    }
+  }, [inputQuantity]);
+
+  const handlePlusQuantity = () => {
+    if (inputQuantity > product.availableQuantity) {
+      alert(`Sorry only ${product.availableQuantity} product are available`);
+      setDisable(true);
+    } else {
+      setInputQuantity((prevState) => prevState + 1);
+      setDisable(false);
+    }
+  };
+
+  const handleMinusQuantity = () => {
+    if (inputQuantity < product.minimumOrder) {
+      alert(`You have to purchase atleast ${product.minimumOrder} product`);
+      setDisable(true);
+    } else {
+      setDisable(false);
+      setInputQuantity((prevState) => prevState - 1);
+    }
+  };
 
   if (isLoading) {
     return <Loading />;
   }
-
-  console.log(product);
 
   return (
     <section className="purchase-page">
@@ -28,18 +103,14 @@ const Purchase = () => {
           <div className="purchase-heading">
             <h2>{product.name}</h2>
             <p>{product.description}</p>
+            <p>{inputQuantity}</p>
           </div>
           <div className="purchase-description">
-            <div className="purchase-description-img">
+            <div className="purchase-description-inner">
               <div className="description-full">
                 <h3>Full Description:</h3>
                 <p>{product.fullDescription}</p>
               </div>
-              <div className="description-img">
-                <img src={product.image} alt="" />
-              </div>
-            </div>
-            <div className="purchase-description-content">
               <div className="purchase-content">
                 <ul>
                   <li>
@@ -49,7 +120,7 @@ const Purchase = () => {
                     Minimum order: <span>{product.minimumOrder}</span>
                   </li>
                   <li>
-                    Available quantity: <span>{product.quantity}</span>
+                    Available quantity: <span>{product.availableQuantity}</span>
                   </li>
                   <li>
                     Price per product: <span>${product.pricePerUnit}</span>
@@ -59,22 +130,54 @@ const Purchase = () => {
                   </li>
                 </ul>
               </div>
+            </div>
+            <div className="purchase-description-content">
+              <div className="description-img">
+                <img src={product.image} alt="" />
+              </div>
+
               <div className="purchase-product">
-                <h3>Enter Purchase Quantity:</h3>
+                <h3>Make Your Purchase:</h3>
+
                 <div className="quantity-box">
-                  <button className="btn btn-full">+</button>
+                  <button onClick={handlePlusQuantity} className="btn btn-full">
+                    +
+                  </button>
                   <input
-                    type="number"
+                    type="text"
                     className="quantity-input"
-                    placeholder="Productn Quantity"
+                    placeholder="Product quantity Quantity"
+                    value={inputQuantity}
+                    onChange={handleInputQuantityChange}
                   />
-                  <button className="btn btn-full">-</button>
-                </div>
-                <div>
-                  <button className="btn btn-full purchase-btn">
-                    Purchase
+                  <button
+                    onClick={handleMinusQuantity}
+                    className="btn btn-full"
+                  >
+                    -
                   </button>
                 </div>
+                {error && <p className="purchase-error">{error}</p>}
+                <form onSubmit={handlePurchase}>
+                  <input type="text" value={user.displayName} disabled />
+                  <input type="email" value={user.email} disabled />
+                  <input
+                    type="text"
+                    placeholder="Your address"
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                  <input
+                    type="number"
+                    placeholder="Your phone"
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                  <input
+                    className="btn btn-full purchase-btn"
+                    type="submit"
+                    value="Purchase"
+                    disabled={disable}
+                  />
+                </form>
               </div>
             </div>
           </div>
