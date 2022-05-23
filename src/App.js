@@ -1,7 +1,6 @@
-import { Route, Routes, useLocation } from "react-router-dom";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import { Route, Routes } from "react-router-dom";
 import AddReview from "./dashboard/AddReview";
+import AllUsers from "./dashboard/AllUsers";
 import Dashboard from "./dashboard/Dashboard";
 import MyOrders from "./dashboard/MyOrders";
 import MyProfile from "./dashboard/MyProfile";
@@ -13,13 +12,8 @@ import Home from "./Pages/Home";
 import Purchase from "./Pages/Purchase";
 
 function App() {
-  const location = useLocation();
-
-  const locationPath = location.pathname === "/dashboard";
-
   return (
     <>
-      <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -44,9 +38,9 @@ function App() {
           <Route path="myOrders" element={<MyOrders />}></Route>
           <Route path="myProfile" element={<MyProfile />}></Route>
           <Route path="addReview" element={<AddReview />}></Route>
+          <Route path="allUsers" element={<AllUsers />}></Route>
         </Route>
       </Routes>
-      {!locationPath && <Footer />}
     </>
   );
 }
