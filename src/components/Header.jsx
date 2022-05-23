@@ -40,10 +40,16 @@ const Header = () => {
           </div>
           <div className="nav-button">
             {!user && (
-              <Link to="/login" className="btn btn-full">
-                Login
-              </Link>
+              <>
+                <Link to="/login" className="btn btn-full">
+                  Login
+                </Link>
+                <Link to="/signup" className="btn btn-outline">
+                  Signup
+                </Link>
+              </>
             )}
+
             {user && <NavProfile />}
             {/* {user ? (
               <Link

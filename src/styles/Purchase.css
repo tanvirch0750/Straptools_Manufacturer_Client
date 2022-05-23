@@ -1,0 +1,103 @@
+.purchase-page {
+  padding: 9.6rem 0;
+  padding-top: 4.8rem;
+}
+
+.purchase-heading {
+  text-align: center;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.purchase-heading h2 {
+  font-size: 5.2rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.purchase-heading p {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin-top: 1.6rem;
+  font-weight: 500;
+}
+
+.purchase-description {
+  margin-top: 3.2rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 2.4rem;
+}
+
+.purchase-description .purchase-description-img {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+  align-items: center;
+}
+
+.purchase-description-img h3 {
+  font-size: 3.2rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.purchase-description-img p {
+  font-size: 1.6rem;
+}
+
+.purchase-description-img img {
+  width: 100%;
+}
+
+.purchase-description-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+  align-items: center;
+  margin-top: 3.2rem;
+}
+
+.purchase-content h3 {
+  margin-bottom: 1.6rem;
+}
+
+.purchase-content ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.purchase-content li {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.purchase-content li span {
+  color: var(--color-secondary);
+}
+
+.quantity-box {
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.quantity-box .btn {
+}
+
+.purchase-product input {
+  padding: 1.5rem 3.2rem;
+  border: 1px solid var(--color-secondary);
+  width: 100%;
+}
+
+.purchase-btn {
+  width: 100%;
+  transition: 300ms;
+}
+
+.purchase-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+}
