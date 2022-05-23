@@ -23,9 +23,20 @@ const Purchase = () => {
   );
   const [inputQuantity, setInputQuantity] = useState(+product?.minimumOrder);
 
-  console.log(disable);
   const handlePurchase = (e) => {
     e.preventDefault();
+    const purchasedProduct = {
+      id: product._id,
+      name: product.name,
+      quantity: inputQuantity,
+      userName: user.displayName,
+      email: user.email,
+      address: address,
+      phone: phone,
+      price: product.pricePerUnit,
+      totalPrice: inputQuantity * product.pricePerUnit,
+    };
+
     if (inputQuantity > product.availableQuantity) {
       setError(`Sorry only ${product.availableQuantity} product are available`);
       setDisable(true);
@@ -33,20 +44,25 @@ const Purchase = () => {
       setError(`You have to purchase at least ${product.minimumOrder} product`);
       setDisable(true);
     } else {
-      const purchasedProduct = {
-        id: product._id,
-        name: product.name,
-        quantity: inputQuantity,
-        userName: user.displayName,
-        email: user.email,
-        address: address,
-        phone: phone,
-        price: product.pricePerUnit,
-        totalPrice: inputQuantity * product.pricePerUnit,
-      };
-      console.log(purchasedProduct);
-      setDisable(false);
-      setError("");
+      fetch("http://localhost:5000/order", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(purchasedProduct),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            alert(`Your order is confirmed`);
+          } else {
+            alert(
+              `You already placed order for this item, plese check dashboard`
+            );
+          }
+          setDisable(false);
+          setError("");
+        });
     }
   };
 

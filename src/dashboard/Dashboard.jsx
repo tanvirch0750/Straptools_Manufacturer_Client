@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "../styles/Dashboard.css";
 
 const Dashboard = () => {
@@ -14,23 +14,24 @@ const Dashboard = () => {
       <aside className="sidebar">
         <h3>Dashboard</h3>
         <nav className="menu">
-          <Link className="menu-item" to="/myOrders">
+          <Link className="menu-item" to="/dashboard/myOrders">
             My Orders
           </Link>
-          <Link className="menu-item" to="/addReview">
+          <Link className="menu-item" to="/dashboard/addReview">
             Add Review
           </Link>
-          <Link className="menu-item" to="/myProfile">
+          <Link className="menu-item" to="/dashboard/myProfile">
             My Profile
           </Link>
         </nav>
       </aside>
       <main className="content">
-        <h1>Welcome, Human</h1>
+        {/* <h1>Welcome, Human</h1>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia,
           explicabo!
-        </p>
+        </p> */}
+        <Outlet />
       </main>
     </section>
   );

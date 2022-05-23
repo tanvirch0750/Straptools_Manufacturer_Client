@@ -22,6 +22,17 @@
   opacity: 0; */
 }
 
+.dash-profile-menu {
+  position: absolute;
+  top: 80px;
+  right: 90px;
+  padding: 2rem;
+  background-color: var(--color-slate-light);
+  width: 20rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 5px;
+}
+
 .profile-menu::before {
   content: "";
   position: absolute;

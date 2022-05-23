@@ -9,11 +9,11 @@ import NavProfile from "./NavProfile";
 const Header = () => {
   const [user] = useAuthState(auth);
   const location = useLocation();
-  console.log(location);
+  const locationPath = location.pathname === "/dashboard";
 
   return (
     <header>
-      {!location.pathname === "/dashboard" && <HeaderContact />}
+      {!locationPath && <HeaderContact />}
 
       <nav className="nav">
         <div className="container nav-inner">
