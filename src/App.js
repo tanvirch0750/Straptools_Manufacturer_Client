@@ -1,6 +1,7 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Dashboard from "./dashboard/Dashboard";
 import Login from "./Pages/Authentication/Login";
 import RequireAuth from "./Pages/Authentication/RequireAuth";
 import Signup from "./Pages/Authentication/Signup";
@@ -8,6 +9,7 @@ import Home from "./Pages/Home";
 import Purchase from "./Pages/Purchase";
 
 function App() {
+  const location = useLocation();
   return (
     <>
       <Header />
@@ -23,8 +25,16 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        ></Route>
       </Routes>
-      <Footer />
+      {!location.pathname === "/dashboard" && <Footer />}
     </>
   );
 }

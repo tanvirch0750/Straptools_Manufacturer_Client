@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import auth from "../Firebase.init";
 import "../styles/Header.css";
 import HeaderContact from "./HeaderContact";
@@ -8,13 +8,13 @@ import NavProfile from "./NavProfile";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  // const handleSignOut = () => {
-  //   signOut(auth);
-  // };
+  const location = useLocation();
+  console.log(location);
 
   return (
     <header>
-      <HeaderContact />
+      {!location.pathname === "/dashboard" && <HeaderContact />}
+
       <nav className="nav">
         <div className="container nav-inner">
           <div className="nav-logo">
