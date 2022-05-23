@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
+import Loading from "../components/Loading";
 import "../styles/HomeProducts.css";
 import Product from "./Product";
 
@@ -12,6 +13,10 @@ const HomeProducts = () => {
     fetch("http://localhost:5000/products").then((res) => res.json())
   );
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   console.log(products);
   return (
     <section className="section-home-products">
@@ -20,7 +25,7 @@ const HomeProducts = () => {
       </div>
       <div className="container">
         <div className="home-products">
-          {products.slice(-3).map((product) => (
+          {products?.slice(-3).map((product) => (
             <Product key={product._id} product={product} />
           ))}
         </div>
