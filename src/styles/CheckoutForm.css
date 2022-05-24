@@ -1,0 +1,16 @@
+.payment-text-success {
+  margin-top: 1.2rem;
+  color: var(--color-secondary);
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.payment-trx {
+  color: var(--color-secondary);
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.checkout-btn {
+  margin-top: 3.2rem;
+}
