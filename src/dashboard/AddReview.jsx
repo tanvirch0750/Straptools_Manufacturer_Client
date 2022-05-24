@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import auth from "../Firebase.init";
 import "../styles/AddReview.css";
 import "../styles/Form.css";
 
@@ -11,6 +13,15 @@ const AddReview = () => {
     reset,
     formState: { errors },
   } = useForm();
+  const [user, loading] = useAuthState(auth);
+
+  useEffect(() => {
+    let defaultValues = {};
+    defaultValues.name = user.displayName;
+    defaultValues.email = user.email;
+
+    reset({ ...defaultValues });
+  }, [user]);
 
   const onSubmit = (data) => {
     fetch("http://localhost:5000/review", {
@@ -50,8 +61,22 @@ const AddReview = () => {
                 })}
                 type="text"
                 placeholder="Enter your name"
+                disabled
               />
               <p className="error-message">{errors.name?.message}</p>
+            </div>
+            <div className="form-control">
+              <label htmlFor="email">Your Email:</label>
+
+              <input
+                {...register("email", {
+                  required: "Please provide your name",
+                })}
+                type="text"
+                placeholder="Enter your name"
+                disabled
+              />
+              <p className="error-message">{errors.email?.message}</p>
             </div>
             <div className="form-control">
               <label htmlFor="image">Your Image Link:</label>

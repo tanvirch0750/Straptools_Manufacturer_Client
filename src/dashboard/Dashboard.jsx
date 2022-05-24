@@ -22,12 +22,16 @@ const Dashboard = () => {
         <aside className="sidebar">
           <h3>Dashboard</h3>
           <nav className="menu">
-            <Link className="menu-item" to="/dashboard/myOrders">
-              My Orders
-            </Link>
-            <Link className="menu-item" to="/dashboard/addReview">
-              Add Review
-            </Link>
+            {!admin && (
+              <Link className="menu-item" to="/dashboard/myOrders">
+                My Orders
+              </Link>
+            )}
+            {!admin && (
+              <Link className="menu-item" to="/dashboard/addReview">
+                Add Review
+              </Link>
+            )}
             <Link className="menu-item" to="/dashboard/myProfile">
               My Profile
             </Link>

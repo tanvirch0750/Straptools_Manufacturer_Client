@@ -3,7 +3,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
 import "../styles/MyProfile.css";
@@ -17,7 +17,7 @@ const MyProfile = () => {
     watch,
     formState: { errors },
   } = useForm({});
-
+  const navigate = useNavigate();
   const {
     data: singleUser,
     isLoading,
@@ -32,7 +32,7 @@ const MyProfile = () => {
       if (res.status === 401 || res.status === 403) {
         localStorage.removeItem("accessToken");
         signOut(auth);
-        Navigate("/");
+        navigate("/");
       }
       return res.json();
     })
