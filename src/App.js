@@ -7,6 +7,7 @@ import ManageOrders from "./dashboard/ManageOrders";
 import ManageProducts from "./dashboard/ManageProducts";
 import MyOrders from "./dashboard/MyOrders";
 import MyProfile from "./dashboard/MyProfile";
+import Payment from "./dashboard/Payment";
 import Welcome from "./dashboard/Welcome";
 import Login from "./Pages/Authentication/Login";
 import RequireAdmin from "./Pages/Authentication/RequireAdmin";
@@ -45,6 +46,7 @@ function App() {
           <Route path="myOrders" element={<MyOrders />}></Route>
           <Route path="myProfile" element={<MyProfile />}></Route>
           <Route path="addReview" element={<AddReview />}></Route>
+          <Route path="payment/:id" element={<Payment />}></Route>
           <Route
             path="allUsers"
             element={

@@ -5,6 +5,10 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.add-product .form-container {
+  max-width: 90rem;
+}
+
 .form-container-inner {
   grid-gap: 3.2rem;
   grid-row-gap: 0;

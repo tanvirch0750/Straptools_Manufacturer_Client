@@ -62,7 +62,9 @@ const AllUsers = () => {
 
   return (
     <section className="all-user">
-      <h2 className="">All User</h2>
+      <div className="section-heading">
+        <h2 className="">All User</h2>
+      </div>
       <div className="table-section">
         <table>
           <thead>

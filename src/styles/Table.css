@@ -30,9 +30,12 @@
 }
 
 .table-btn {
-  padding: 0.8rem;
+  padding: 0.8rem !important;
   background-color: var(--color-secondary);
   color: var(--color-light);
+}
+.table-btn.btn {
+  padding: 0;
 }
 
 .table-danger-btn {
