@@ -13,6 +13,7 @@ import RequireAdmin from "./Pages/Authentication/RequireAdmin";
 import RequireAuth from "./Pages/Authentication/RequireAuth";
 import Signup from "./Pages/Authentication/Signup";
 import Home from "./Pages/Home";
+import NotFound from "./Pages/NotFound";
 import Purchase from "./Pages/Purchase";
 import "./styles/Form.css";
 import "./styles/Table.css";
@@ -77,6 +78,7 @@ function App() {
             }
           ></Route>
         </Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </>
   );

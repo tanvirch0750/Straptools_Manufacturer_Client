@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import HeaderContact from "../components/HeaderContact";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
 import "../styles/Purchase.css";
@@ -113,6 +114,7 @@ const Purchase = () => {
 
   return (
     <>
+      <HeaderContact />
       <Header />
       <section className="purchase-page">
         <div className="container">

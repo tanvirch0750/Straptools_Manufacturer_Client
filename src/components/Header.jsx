@@ -3,18 +3,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useLocation } from "react-router-dom";
 import auth from "../Firebase.init";
 import "../styles/Header.css";
-import HeaderContact from "./HeaderContact";
 import NavProfile from "./NavProfile";
 
 const Header = () => {
   const [user] = useAuthState(auth);
   const location = useLocation();
-  const locationPath = location.pathname === "/dashboard";
 
   return (
     <header>
-      {!locationPath && <HeaderContact />}
-
       <nav className="nav">
         <div className="container nav-inner">
           <div className="nav-logo">
