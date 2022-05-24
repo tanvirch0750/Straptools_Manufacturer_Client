@@ -12,7 +12,23 @@ const AddProducts = () => {
   } = useForm({});
 
   const onSubmit = (data) => {
-    console.log(data);
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          alert(`Your order is confirmed`);
+          reset();
+        } else {
+          alert("product add failed");
+        }
+      });
   };
 
   return (
