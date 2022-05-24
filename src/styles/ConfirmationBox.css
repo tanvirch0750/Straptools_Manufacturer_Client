@@ -1,0 +1,54 @@
+.cb-background {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: calc(100vh);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.cb-container {
+  max-width: 50rem;
+  margin: 0 auto;
+  border-radius: 12px;
+  background-color: var(--color-light);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
+  padding: 3.2rem;
+}
+
+.cb-title {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.3;
+}
+
+.cb-close-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cb-close-btn button {
+  background-color: transparent;
+  color: var(--color-secondary);
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.con-delete-btn {
+  background-color: orangered;
+  color: var(--color-light);
+}
+
+.cb-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}

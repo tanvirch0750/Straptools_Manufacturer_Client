@@ -1,6 +1,7 @@
 .dashboard {
   display: flex;
   min-height: calc(100vh - 7.2rem);
+  position: relative;
 }
 
 .menu-toggle {

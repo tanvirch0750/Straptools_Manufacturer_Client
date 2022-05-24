@@ -1,14 +1,17 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import ConfirmationBox from "../components/ConfirmationBox";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
 import "../styles/MyOrder.css";
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
+  const [open, setOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -31,61 +34,98 @@ const MyOrders = () => {
     })
   );
 
+  const handleDeleteFunction = () => {
+    fetch(`http://localhost:5000/order/${deleteId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          alert(`Order cancelled successfully`);
+          refetch();
+        } else {
+          alert("Something went wrong");
+        }
+      });
+  };
+
+  const handleDelete = (id) => {
+    setOpen(true);
+    setDeleteId(id);
+  };
+
   if (isLoading) {
     return <Loading />;
   }
 
   return (
-    <section className="my-orders">
-      <div className="section-heading">
-        <h2 className="">My Orders</h2>
-      </div>
-      <div className="table-section">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Total</th>
-              <th>Payment</th>
-              <th>Cancel</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order._id}>
-                <td data-lebel="Name">{order.name}</td>
-                <td data-lebel="Quantity">{order.quantity}</td>
-                <td data-lebel="Price">{order.price}</td>
-                <td data-lebel="Total">{order.totalPrice}</td>
-                <td data-lebel="Payment">
-                  {!order.paid ? (
-                    <button
-                      className="btn table-btn"
-                      onClick={() =>
-                        navigate(`/dashboard/payment/${order._id}`)
-                      }
-                    >
-                      Pay
-                    </button>
-                  ) : (
-                    <button className="btn table-btn" disabled>
-                      Paid
-                    </button>
-                  )}
-                </td>
-                <td data-lebel="Delete">
-                  <button className="btn table-btn table-danger-btn">
-                    Cancel
-                  </button>
-                </td>
+    <>
+      {open && (
+        <ConfirmationBox
+          setOpen={setOpen}
+          deleteFunction={handleDeleteFunction}
+          confirmation={true}
+        />
+      )}
+      <section className="my-orders">
+        <div className="section-heading">
+          <h2 className="">My Orders</h2>
+        </div>
+        <div className="table-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Payment</th>
+                <th>Cancel</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
+            </thead>
+            <tbody>
+              {orders.map((order) => (
+                <tr key={order._id}>
+                  <td data-lebel="Name">{order.name}</td>
+                  <td data-lebel="Quantity">{order.quantity}</td>
+                  <td data-lebel="Price">{order.price}</td>
+                  <td data-lebel="Total">{order.totalPrice}</td>
+                  <td data-lebel="Payment">
+                    {!order.paid ? (
+                      <button
+                        className="btn table-btn"
+                        onClick={() =>
+                          navigate(`/dashboard/payment/${order._id}`)
+                        }
+                      >
+                        Pay
+                      </button>
+                    ) : (
+                      <>
+                        <p>Paid - Trx id:</p>
+                        <p>{order.transactionId}</p>
+                      </>
+                    )}
+                  </td>
+                  <td data-lebel="Delete">
+                    <button
+                      className="btn table-btn table-danger-btn"
+                      disabled={order.paid}
+                      onClick={() => handleDelete(order._id)}
+                    >
+                      Cancel
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </>
   );
 };
 

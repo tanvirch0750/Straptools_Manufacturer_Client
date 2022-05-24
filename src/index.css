@@ -185,6 +185,13 @@ h3 {
   color: var(--color-secondary);
 }
 
+.btn:disabled,
+.btn[disabled] button:disabled,
+button[disabled] {
+  opacity: 0.5;
+  cursor: unset;
+}
+
 @media only screen and (max-width: 1000px) {
   .container {
     max-width: 100%;
