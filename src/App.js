@@ -14,6 +14,8 @@ import RequireAuth from "./Pages/Authentication/RequireAuth";
 import Signup from "./Pages/Authentication/Signup";
 import Home from "./Pages/Home";
 import Purchase from "./Pages/Purchase";
+import "./styles/Form.css";
+import "./styles/Table.css";
 
 function App() {
   return (

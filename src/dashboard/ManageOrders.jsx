@@ -63,7 +63,9 @@ const ManageOrders = () => {
                   <button className="btn table-btn">Confirm</button>
                 </td>
                 <td data-lebel="Delete">
-                  <button className="btn table-btn">Delete</button>
+                  <button className="btn table-btn table-danger-btn">
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
