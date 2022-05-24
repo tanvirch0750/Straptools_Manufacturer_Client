@@ -1,7 +1,10 @@
 import { Route, Routes } from "react-router-dom";
+import AddProducts from "./dashboard/AddProducts";
 import AddReview from "./dashboard/AddReview";
 import AllUsers from "./dashboard/AllUsers";
 import Dashboard from "./dashboard/Dashboard";
+import ManageOrders from "./dashboard/ManageOrders";
+import ManageProducts from "./dashboard/ManageProducts";
 import MyOrders from "./dashboard/MyOrders";
 import MyProfile from "./dashboard/MyProfile";
 import Welcome from "./dashboard/Welcome";
@@ -44,6 +47,30 @@ function App() {
             element={
               <RequireAdmin>
                 <AllUsers />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageOrders"
+            element={
+              <RequireAdmin>
+                <ManageOrders />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="manageProducts"
+            element={
+              <RequireAdmin>
+                <ManageProducts />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="addProduct"
+            element={
+              <RequireAdmin>
+                <AddProducts />
               </RequireAdmin>
             }
           ></Route>

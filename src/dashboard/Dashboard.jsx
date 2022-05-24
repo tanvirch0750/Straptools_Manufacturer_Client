@@ -40,6 +40,21 @@ const Dashboard = () => {
                 All Users
               </Link>
             )}
+            {admin && (
+              <Link className="menu-item" to="/dashboard/manageOrders">
+                Manage Orders
+              </Link>
+            )}
+            {admin && (
+              <Link className="menu-item" to="/dashboard/addProduct">
+                Add Product
+              </Link>
+            )}
+            {admin && (
+              <Link className="menu-item" to="/dashboard/manageProducts">
+                Manage Products
+              </Link>
+            )}
           </nav>
         </aside>
         <main className="content">

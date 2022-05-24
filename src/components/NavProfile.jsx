@@ -4,11 +4,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { IoAppsOutline, IoLogOutOutline } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
 import avatar from "../assets/images/icons/avatar.png";
+import Loading from "../components/Loading";
 import auth from "../Firebase.init";
 import "../styles/NavProfile.css";
 
 const NavProfile = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [profileToggle, setProfileToggle] = useState(false);
   const handleSignOut = () => {
     signOut(auth);
@@ -22,6 +23,10 @@ const NavProfile = () => {
 
   const dashboardCss =
     location.pathname === "/dashboard" && "dash-profile-menu";
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>
