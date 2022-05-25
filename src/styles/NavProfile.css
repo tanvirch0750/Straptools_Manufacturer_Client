@@ -19,6 +19,7 @@
   width: 20rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 5px;
+  z-index: 1000;
   /* visibility: hidden;
   opacity: 0; */
 }
@@ -32,6 +33,7 @@
   width: 20rem;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 5px;
+  z-index: 1000;
 }
 
 .profile-menu::before {

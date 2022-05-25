@@ -12,7 +12,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header>
+    <header className="header">
       <nav className={`nav ${open ? "open" : ""}`}>
         <div className="container nav-inner">
           <div className="nav-logo">

@@ -1,3 +1,7 @@
+.header {
+  position: sticky;
+  top: 0;
+}
 .nav {
   height: 7.2rem;
   background-color: var(--color-slate-light);
@@ -36,6 +40,7 @@
 .nav-button {
   display: flex;
   gap: 1.6rem;
+  display: none;
 }
 
 .header-profile-box {
@@ -57,6 +62,10 @@
 /* Media Query */
 @media only screen and (max-width: 900px) {
   .hamburger-btn {
+    display: block;
+  }
+
+  .nav-button {
     display: block;
   }
 
