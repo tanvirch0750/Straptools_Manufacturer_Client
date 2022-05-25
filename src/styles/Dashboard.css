@@ -18,6 +18,7 @@
   border-radius: 99px;
   background-color: var(--color-priamry);
   cursor: pointer;
+  z-index: 3333;
 }
 
 .hamburger {
