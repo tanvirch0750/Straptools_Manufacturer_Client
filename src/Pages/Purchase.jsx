@@ -122,7 +122,6 @@ const Purchase = () => {
             <div className="purchase-heading">
               <h2>{product.name}</h2>
               <p>{product.description}</p>
-              <p>{inputQuantity}</p>
             </div>
             <div className="purchase-description">
               <div className="purchase-description-inner">

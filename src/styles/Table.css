@@ -51,8 +51,8 @@
 }
 
 @media (max-width: 768px) {
-  .manage-inventory {
-    padding-bottom: 0;
+  .table-section {
+    margin-top: 0;
   }
 
   .table-section table thead {
