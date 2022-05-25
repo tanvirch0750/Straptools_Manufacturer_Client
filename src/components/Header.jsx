@@ -32,6 +32,9 @@ const Header = () => {
               <li>
                 <Link to="/blogs">Blogs</Link>
               </li>
+              <li>
+                <Link to="/portfolio">My Portfolio</Link>
+              </li>
             </ul>
           </div>
           <div className="nav-button">

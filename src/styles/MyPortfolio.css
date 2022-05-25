@@ -1,0 +1,162 @@
+.my-portfolio {
+  padding: 3.2rem 0;
+}
+
+.my-portfolio h2 {
+  margin-bottom: 0;
+  font-size: 3.2rem;
+  color: var(--color-primary-light);
+  font-weight: 700;
+}
+
+.my-portfolio-inner {
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.portfolio-heading {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.portfolio-heading h2 {
+  font-size: 4.4rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+  margin-bottom: 0.8rem;
+}
+
+.portfolio-heading h3 {
+  margin-bottom: 0;
+  font-size: 3.2rem;
+  color: var(--color-primary-light);
+  font-weight: 700;
+}
+
+.portfolio-address {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6.4rem;
+}
+
+.address-basic {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  color: var(--color-slate-dark);
+}
+
+.address-basic span {
+  font-weight: bold;
+  padding-right: 0.5rem;
+}
+
+.address-social {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.address-social a {
+  color: var(--color-secondary);
+}
+
+.career-objective {
+  margin-top: 3.2rem;
+}
+
+.career-objective p {
+  margin-top: 2.4rem;
+  font-size: 1.6rem;
+}
+
+.skills {
+  margin-top: 3.2rem;
+}
+
+.skills-inner {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-size: 1.6rem;
+}
+
+.skills-inner span {
+  font-weight: 700;
+  padding-right: 0.5rem;
+}
+
+.summary h3 {
+  font-weight: 500;
+  font-style: 2.4rem;
+  margin-bottom: 1.2rem;
+  color: var(--color-primary-light);
+}
+
+.summary ul {
+  list-style-type: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-left: 3.2rem;
+}
+
+.projects {
+  margin-top: 3.2rem;
+}
+
+.project-inner {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 2.4rem;
+}
+.project img {
+  width: 100%;
+  height: 100%;
+}
+
+.project-description h3 {
+  margin-bottom: 1.2rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.project-links a {
+  font-size: 1.6rem;
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.project-description {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.technologies span {
+  font-weight: 700;
+  padding-right: 0.5rem;
+}
+
+.languages,
+.education {
+  margin-top: 3.2rem;
+}
+
+.languages p,
+.education p {
+  font-size: 1.6rem;
+  margin-top: 2.4rem;
+}
