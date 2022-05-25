@@ -24,9 +24,12 @@ const HomeProducts = () => {
       </div>
       <div className="container">
         <div className="home-products">
-          {products?.slice(-3).map((product) => (
-            <Product key={product._id} product={product} />
-          ))}
+          {products
+            ?.slice(-6)
+            .reverse()
+            .map((product) => (
+              <Product key={product._id} product={product} />
+            ))}
         </div>
       </div>
     </section>

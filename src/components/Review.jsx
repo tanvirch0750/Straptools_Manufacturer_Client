@@ -6,9 +6,12 @@ const Review = ({ review }) => {
   return (
     <blockquote className="review">
       <div className="review-content">
-        <h3>
-          <FaQuoteLeft />
-        </h3>
+        <div className="rating">
+          <h3>
+            <FaQuoteLeft />
+          </h3>
+          <p>Rating: {review.number}/5</p>
+        </div>
         <p>{review.review}</p>
       </div>
       <div className="review-footer">
