@@ -23,7 +23,7 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery(["users", user.email], () =>
-    fetch(`http://localhost:5000/users/${user.email}`, {
+    fetch(`https://polar-tundra-61708.herokuapp.com/users/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -46,14 +46,17 @@ const MyProfile = () => {
       ...data,
     };
     console.log(findalData);
-    fetch(`http://localhost:5000/user/profile/${user.email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(findalData),
-    })
+    fetch(
+      `https://polar-tundra-61708.herokuapp.com/user/profile/${user.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(findalData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

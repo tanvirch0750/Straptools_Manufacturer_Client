@@ -24,7 +24,7 @@ const AddReview = () => {
   }, [user]);
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/review", {
+    fetch("https://polar-tundra-61708.herokuapp.com/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

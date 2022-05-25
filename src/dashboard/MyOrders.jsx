@@ -19,12 +19,15 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery("myOrders", () =>
-    fetch(`http://localhost:5000/order?email=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://polar-tundra-61708.herokuapp.com/order?email=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         localStorage.removeItem("accessToken");
         signOut(auth);
@@ -35,7 +38,7 @@ const MyOrders = () => {
   );
 
   const handleDeleteFunction = () => {
-    fetch(`http://localhost:5000/order/${deleteId}`, {
+    fetch(`https://polar-tundra-61708.herokuapp.com/order/${deleteId}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

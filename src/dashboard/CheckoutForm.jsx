@@ -15,7 +15,7 @@ const CheckoutForm = ({ order }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://polar-tundra-61708.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent.id,
       };
 
-      const url = `http://localhost:5000/order/${_id}`;
+      const url = `https://polar-tundra-61708.herokuapp.com/order/${_id}`;
 
       fetch(url, {
         method: "PATCH",

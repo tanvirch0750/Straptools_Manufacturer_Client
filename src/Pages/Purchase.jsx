@@ -18,7 +18,7 @@ const Purchase = () => {
   const [error, setError] = useState("");
 
   const { data: product, isLoading } = useQuery(["purchase", id], () =>
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://polar-tundra-61708.herokuapp.com/products/${id}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -47,7 +47,7 @@ const Purchase = () => {
       setError(`You have to purchase at least ${product.minimumOrder} product`);
       setDisable(true);
     } else {
-      fetch("http://localhost:5000/order", {
+      fetch("https://polar-tundra-61708.herokuapp.com/order", {
         method: "POST",
         headers: {
           "content-type": "application/json",

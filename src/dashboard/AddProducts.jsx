@@ -12,7 +12,7 @@ const AddProducts = () => {
   } = useForm({});
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/products", {
+    fetch("https://polar-tundra-61708.herokuapp.com/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

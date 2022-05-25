@@ -11,7 +11,9 @@ const Reviews = () => {
     error,
     data: reviews,
   } = useQuery("reviews", () =>
-    fetch("http://localhost:5000/review").then((res) => res.json())
+    fetch("https://polar-tundra-61708.herokuapp.com/review").then((res) =>
+      res.json()
+    )
   );
 
   useEffect(() => {

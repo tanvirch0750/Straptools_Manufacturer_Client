@@ -15,7 +15,7 @@ const Payment = () => {
   const { id } = useParams();
 
   const { data: order, isLoading } = useQuery(["paymentOrder", id], () =>
-    fetch(`http://localhost:5000/orders/${id}`, {
+    fetch(`https://polar-tundra-61708.herokuapp.com/orders/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

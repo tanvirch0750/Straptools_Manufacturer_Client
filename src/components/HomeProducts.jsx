@@ -10,7 +10,9 @@ const HomeProducts = () => {
     error,
     data: products,
   } = useQuery("products", () =>
-    fetch("http://localhost:5000/products").then((res) => res.json())
+    fetch("https://polar-tundra-61708.herokuapp.com/products").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
