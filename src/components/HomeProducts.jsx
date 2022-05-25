@@ -17,7 +17,6 @@ const HomeProducts = () => {
     return <Loading />;
   }
 
-  console.log(products);
   return (
     <section className="section-home-products">
       <div className="section-heading">
