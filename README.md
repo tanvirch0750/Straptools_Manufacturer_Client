@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Straptools - Tools Manufacturer company
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Live website link [Straptools](https://straptools-420cd.web.app/)
+- Server Side github link [Straptools Server Github](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-tanvirch0750)
+- Server Side heroku link [Sports Zone Server Heroku](https://polar-tundra-61708.herokuapp.com/)
 
-## Available Scripts
+## Website description
 
-In the project directory, you can run:
+It is Manufacturer company for a strapping tools. They provide their tools all round the world. They have theree category for strapping tools, Plastic, Textile and Steel.
 
-### `npm start`
+## Website features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- If anyone want buy the product they have to login first
+- When user purchase the product he can select product quantity but product quantity cannot be grater than available quantity.
+- User can also add review from add review page.
+- After purchase the product user can go to dashboard and will see my orders page.
+- From my orders page user can make payment for the products or cancel the profile product.
+- There is also a my profile page. In there user can see their profile and can update profile.
+- If user is an Admin, then admin will see all the users, add product, manage-products, etc.
+- Admin can make admin another user.
+- Admin can add product, manage products, confirm orders.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technology uses for this website
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React Js
+- Firebase Authentication
+- Node Js and Express for backend
+- Monogo Db
+- Stripe payment system
+- JSON Web Token
+- React form hook
+- React Icons
+- Custom Css
+- React Query
+- Heroku
