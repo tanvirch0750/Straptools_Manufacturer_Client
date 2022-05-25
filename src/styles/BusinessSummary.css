@@ -29,31 +29,6 @@
 
   background-size: cover;
   background-position: right;
-
-  /* box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); */
-
-  /* @include respond(tab-land) {
-    background-image: linear-gradient(105deg, rgba($color-white, .9) 0%, rgba($color-white, .9) 65%, transparent 65%), url(../img/nat-10.jpg);
-    background-size: cover;
-  }
-
-  @include respond(tab-port) {
-    background-image: linear-gradient(to right, rgba($color-white, .9) 0%, rgba($color-white, .9) 100%), url(../img/nat-10.jpg);
-    background-size: cover;
-  } */
-
-  /* &__form {
-    width: 50%;
-    padding: 6rem;
-
-    @include respond(tab-land) {
-      width: 65%;
-    }
-
-    @include respond(tab-port) {
-      width: 100%;
-    }
-  } */
 }
 
 .summary-content {
@@ -80,9 +55,9 @@
 
 .summary-numbers {
   background-color: var(--color-secondary);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  grid-gap: 3.2rem;
   padding: 6rem;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
 }
@@ -102,4 +77,59 @@
 
 .summary-number img {
   width: 7rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .summary-inner {
+    background-image: linear-gradient(
+        105deg,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.9) 65%,
+        transparent 65%
+      ),
+      url(../assets/images/banner/summary-banner.jpg);
+    background-size: cover;
+  }
+
+  .summary-content {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .summary-inner {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.9) 100%
+      ),
+      url(../assets/images/banner/summary-banner.jpg);
+    background-size: cover;
+  }
+
+  .summary-content {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .summary-content h2 {
+    font-size: 3.2rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .summary-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .summary-content {
+    padding: 3.2rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .summary-content {
+    padding: 1.6rem;
+  }
 }
