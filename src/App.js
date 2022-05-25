@@ -13,6 +13,7 @@ import Login from "./Pages/Authentication/Login";
 import RequireAdmin from "./Pages/Authentication/RequireAdmin";
 import RequireAuth from "./Pages/Authentication/RequireAuth";
 import Signup from "./Pages/Authentication/Signup";
+import Blogs from "./Pages/Blogs";
 import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
 import Purchase from "./Pages/Purchase";
@@ -24,6 +25,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route

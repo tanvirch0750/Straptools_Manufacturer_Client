@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { IoAppsOutline, IoLogOutOutline } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
+import { Link, matchPath, useLocation } from "react-router-dom";
 import avatar from "../assets/images/icons/avatar.png";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
@@ -19,10 +19,10 @@ const NavProfile = () => {
     setProfileToggle(!profileToggle);
   };
 
-  const location = useLocation();
+  const { pathname } = useLocation();
+  const isDashboardPath = matchPath("/dashboard/*", pathname);
 
-  const dashboardCss =
-    location.pathname === "/dashboard" && "dash-profile-menu";
+  const dashboardCss = isDashboardPath && "dash-profile-menu";
 
   if (loading) {
     return <Loading />;
