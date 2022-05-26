@@ -25,12 +25,12 @@ const Header = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/about">About</Link>
             </li>
             <li>
               <Link to="/products">Products</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/blogs">Blogs</Link>
             </li>

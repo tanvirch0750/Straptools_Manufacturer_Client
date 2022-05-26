@@ -1,11 +1,14 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 111111;
 }
 .nav {
   height: 7.2rem;
-  background-color: var(--color-slate-light);
+  /* background-color: #ebf5f0; */
+  background-color: #e6eaed;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .nav-inner {

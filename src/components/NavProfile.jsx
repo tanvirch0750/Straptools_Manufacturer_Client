@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { IoAppsOutline, IoLogOutOutline } from "react-icons/io5";
 import { Link, matchPath, useLocation } from "react-router-dom";
@@ -11,6 +11,7 @@ import "../styles/NavProfile.css";
 const NavProfile = () => {
   const [user, loading] = useAuthState(auth);
   const [profileToggle, setProfileToggle] = useState(false);
+  const [profile, setProfile] = useState("");
   const handleSignOut = () => {
     signOut(auth);
   };
@@ -18,6 +19,10 @@ const NavProfile = () => {
   const toggleProfile = () => {
     setProfileToggle(!profileToggle);
   };
+
+  useEffect(() => {
+    setProfile(user?.photoURL);
+  }, [user]);
 
   const { pathname } = useLocation();
   const isDashboardPath = matchPath("/dashboard/*", pathname);
@@ -31,7 +36,7 @@ const NavProfile = () => {
   return (
     <div>
       <div className="profile" onClick={toggleProfile}>
-        <img src={user.photoURL || avatar} alt="avatar" />
+        <img src={profile || avatar} alt="avatar" />
 
         <div
           className={`profile-menu ${dashboardCss}`}

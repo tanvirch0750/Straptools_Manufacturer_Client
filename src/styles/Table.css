@@ -1,5 +1,6 @@
 .table-section {
   margin-top: 2.4rem;
+  overflow-x: auto;
 }
 
 .table-section table {
@@ -50,9 +51,9 @@
   margin-left: 1.6rem;
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 1100px) {
   .table-section {
-    margin-top: 0;
+    margin-top: 3.2rem;
   }
 
   .table-section table thead {
