@@ -32,28 +32,29 @@ const NavProfile = () => {
     <div>
       <div className="profile" onClick={toggleProfile}>
         <img src={user.photoURL || avatar} alt="avatar" />
-      </div>
-      <div
-        className={`profile-menu ${dashboardCss}`}
-        style={
-          profileToggle
-            ? { visibility: "visible", opacity: "1" }
-            : { visibility: "hidden", opacity: "0" }
-        }
-      >
-        <h4>{user?.displayName}</h4>
-        <ul>
-          <li>
-            <IoAppsOutline className="profile-icon" />
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <IoLogOutOutline className="profile-icon" />
-            <Link onClick={handleSignOut} to="/login">
-              Logout
-            </Link>
-          </li>
-        </ul>
+
+        <div
+          className={`profile-menu ${dashboardCss}`}
+          style={
+            profileToggle
+              ? { visibility: "visible", opacity: "1" }
+              : { visibility: "hidden", opacity: "0" }
+          }
+        >
+          <h4>{user?.displayName}</h4>
+          <ul>
+            <li>
+              <IoAppsOutline className="profile-icon" />
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>
+              <IoLogOutOutline className="profile-icon" />
+              <Link onClick={handleSignOut} to="/login">
+                Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

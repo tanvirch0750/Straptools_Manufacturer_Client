@@ -37,26 +37,26 @@ const Header = () => {
             <li>
               <Link to="/portfolio">My Portfolio</Link>
             </li>
+            {user && (
+              <div className="header-profile-box">{user && <NavProfile />}</div>
+            )}
+            <div className="nav-button">
+              {!user && (
+                <>
+                  <Link to="/login" className="btn btn-full login-btn">
+                    Login
+                  </Link>
+                  <Link to="/signup" className="btn btn-outline signup-btn">
+                    Signup
+                  </Link>
+                </>
+              )}
+            </div>
           </ul>
 
-          <div className="nav-button">
-            {!user && (
-              <>
-                <Link to="/login" className="btn btn-full">
-                  Login
-                </Link>
-                <Link to="/signup" className="btn btn-outline">
-                  Signup
-                </Link>
-              </>
-            )}
-          </div>
-          <div className="header-profile-box">
-            {user && <NavProfile />}
-            <button className="hamburger-btn" onClick={() => setOpen(!open)}>
-              {open ? <IoCloseOutline /> : <IoMenuOutline />}
-            </button>
-          </div>
+          <button className="hamburger-btn" onClick={() => setOpen(!open)}>
+            {open ? <IoCloseOutline /> : <IoMenuOutline />}
+          </button>
         </div>
       </nav>
     </header>

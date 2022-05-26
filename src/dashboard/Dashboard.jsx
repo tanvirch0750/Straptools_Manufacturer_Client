@@ -60,11 +60,6 @@ const Dashboard = () => {
           </nav>
         </aside>
         <main className="content">
-          {/* <h1>Welcome, Human</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia,
-          explicabo!
-        </p> */}
           <Outlet />
         </main>
       </section>
