@@ -11,7 +11,7 @@
 }
 
 .product {
-  background-color: rgba(3, 69, 107, 0.034);
+  background-color: #ebf5f0;
 
   display: flex;
   flex-direction: column;
