@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import "../styles/AddProducts.css";
 
 const AddProducts = () => {
@@ -23,10 +24,10 @@ const AddProducts = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          alert(`Your order is confirmed`);
+          toast.success("Product added successfully");
           reset();
         } else {
-          alert("product add failed");
+          toast.error("Product add attemt failed");
         }
       });
   };

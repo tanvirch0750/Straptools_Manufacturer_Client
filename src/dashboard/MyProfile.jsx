@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
 import "../styles/MyProfile.css";
@@ -38,14 +39,12 @@ const MyProfile = () => {
     })
   );
 
-  console.log(singleUser);
-
   const onSubmit = (data) => {
     const findalData = {
       name: user.displayName,
       ...data,
     };
-    console.log(findalData);
+
     fetch(
       `https://polar-tundra-61708.herokuapp.com/user/profile/${user.email}`,
       {
@@ -60,7 +59,7 @@ const MyProfile = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        alert(`Update profile successfull`);
+        toast.success(`Update profile successfull`);
         refetch();
       });
   };

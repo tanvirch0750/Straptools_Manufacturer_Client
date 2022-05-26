@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../Firebase.init";
 import "../styles/AddReview.css";
 import "../styles/Form.css";
@@ -35,10 +36,10 @@ const AddReview = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          alert(`Your review is successfull`);
+          toast.success(`Your review is successfull`);
           reset();
         } else {
-          alert("Something went wrong, cannot add your review");
+          toast.error("Something went wrong, cannot add your review");
         }
       });
   };

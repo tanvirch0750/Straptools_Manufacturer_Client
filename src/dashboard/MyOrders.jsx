@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import ConfirmationBox from "../components/ConfirmationBox";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
@@ -47,10 +48,10 @@ const MyOrders = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
-          alert(`Order cancelled successfully`);
+          toast.error(`Order cancelled successfully`);
           refetch();
         } else {
-          alert("Something went wrong");
+          toast.error("Something went wrong");
         }
       });
   };

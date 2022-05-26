@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import ConfirmationBox from "../components/ConfirmationBox";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
@@ -43,7 +44,7 @@ const ManageOrders = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert("Order approved");
+        toast.success("Order approved");
         refetch();
       });
   };
@@ -58,10 +59,10 @@ const ManageOrders = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
-          alert(`Order cancelled successfully`);
+          toast.success("Order cancelled succfully");
           refetch();
         } else {
-          alert("Something went wrong");
+          toast.error("Something went wrong");
         }
       });
   };
@@ -70,8 +71,6 @@ const ManageOrders = () => {
     setOpen(true);
     setDeleteId(id);
   };
-
-  console.log(orders);
 
   if (isLoading) {
     return <Loading />;

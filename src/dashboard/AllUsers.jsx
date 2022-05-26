@@ -3,6 +3,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
 
@@ -43,7 +44,7 @@ const AllUsers = () => {
           localStorage.removeItem("accessToken");
           signOut(auth);
           navigate("/");
-          alert("Make admin attempt fail");
+          toast.error("Make admin attempt fail");
         }
         return res.json();
       })
@@ -51,7 +52,7 @@ const AllUsers = () => {
         console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
-          alert("Successfully made an admin");
+          toast.success("Successfully made an admin");
         }
       });
   };

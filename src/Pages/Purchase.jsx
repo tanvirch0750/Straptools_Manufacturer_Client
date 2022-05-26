@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeaderContact from "../components/HeaderContact";
@@ -58,7 +59,7 @@ const Purchase = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
-            alert(`Your order is confirmed`);
+            toast.success(`Your order is confirmed`);
           }
           setDisable(false);
           setError("");
@@ -75,7 +76,6 @@ const Purchase = () => {
   }, [product]);
 
   useEffect(() => {
-    console.log(inputQuantity, product?.minimumOrder);
     if (inputQuantity > product?.availableQuantity) {
       setError(`Sorry only ${product.availableQuantity} product are available`);
       setDisable(true);
@@ -90,7 +90,9 @@ const Purchase = () => {
 
   const handlePlusQuantity = () => {
     if (inputQuantity > product.availableQuantity) {
-      alert(`Sorry only ${product.availableQuantity} product are available`);
+      toast.error(
+        `Sorry only ${product.availableQuantity} product are available`
+      );
       setDisable(true);
     } else {
       setInputQuantity((prevState) => prevState + 1);
@@ -100,7 +102,9 @@ const Purchase = () => {
 
   const handleMinusQuantity = () => {
     if (inputQuantity < product.minimumOrder) {
-      alert(`You have to purchase atleast ${product.minimumOrder} product`);
+      toast.error(
+        `You have to purchase atleast ${product.minimumOrder} product`
+      );
       setDisable(true);
     } else {
       setDisable(false);
