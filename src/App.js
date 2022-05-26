@@ -12,6 +12,7 @@ import Welcome from "./dashboard/Welcome";
 import Login from "./Pages/Authentication/Login";
 import RequireAdmin from "./Pages/Authentication/RequireAdmin";
 import RequireAuth from "./Pages/Authentication/RequireAuth";
+import RequireUser from "./Pages/Authentication/RequireUser";
 import Signup from "./Pages/Authentication/Signup";
 import Blogs from "./Pages/Blogs";
 import Home from "./Pages/Home";
@@ -47,10 +48,31 @@ function App() {
           }
         >
           <Route index element={<Welcome />}></Route>
-          <Route path="myOrders" element={<MyOrders />}></Route>
+          <Route
+            path="myOrders"
+            element={
+              <RequireUser>
+                <MyOrders />
+              </RequireUser>
+            }
+          ></Route>
           <Route path="myProfile" element={<MyProfile />}></Route>
-          <Route path="addReview" element={<AddReview />}></Route>
-          <Route path="payment/:id" element={<Payment />}></Route>
+          <Route
+            path="addReview"
+            element={
+              <RequireUser>
+                <AddReview />
+              </RequireUser>
+            }
+          ></Route>
+          <Route
+            path="payment/:id"
+            element={
+              <RequireUser>
+                <Payment />
+              </RequireUser>
+            }
+          ></Route>
           <Route
             path="allUsers"
             element={

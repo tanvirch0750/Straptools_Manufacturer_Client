@@ -5,6 +5,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 import auth from "../../Firebase.init";
 import useToken from "../../hooks/useToken";
@@ -73,56 +74,59 @@ const Login = () => {
   }
 
   return (
-    <section className="login">
-      <div className="container login-inner">
-        <div className="form-container">
-          <h2>Login</h2>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control">
-              <label htmlFor="name">Your email:</label>
+    <>
+      <Header />
+      <section className="login">
+        <div className="container login-inner">
+          <div className="form-container">
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-control">
+                <label htmlFor="name">Your email:</label>
 
+                <input
+                  {...register("email", {
+                    required: "Please provide your email address",
+                  })}
+                  type="email"
+                  placeholder="Enter your email"
+                />
+                <p className="error-message">{errors.email?.message}</p>
+              </div>
+              <div className="form-control">
+                <label htmlFor="name">Your password:</label>
+                <input
+                  {...register("password", {
+                    required: "Please give your password",
+                  })}
+                  type="password"
+                  placeholder="Enter your password"
+                />
+                <p className="error-message">{errors.password?.message}</p>
+              </div>
+              {customError && <p className="error-message">{customError}</p>}
               <input
-                {...register("email", {
-                  required: "Please provide your email address",
-                })}
-                type="email"
-                placeholder="Enter your email"
+                type="submit"
+                className="btn btn-full form-btn"
+                value="Login"
               />
-              <p className="error-message">{errors.email?.message}</p>
-            </div>
-            <div className="form-control">
-              <label htmlFor="name">Your password:</label>
-              <input
-                {...register("password", {
-                  required: "Please give your password",
-                })}
-                type="password"
-                placeholder="Enter your password"
-              />
-              <p className="error-message">{errors.password?.message}</p>
-            </div>
-            {customError && <p className="error-message">{customError}</p>}
-            <input
-              type="submit"
-              className="btn btn-full form-btn"
-              value="Login"
-            />
-          </form>
+            </form>
 
-          <p className="forgot-password--text">
-            Forgot your password?{" "}
-            <span onClick={handleResetEmail}>Reset your password</span>
-          </p>
-          <p className="login-signup-text">
-            Don't have an account?{" "}
-            <Link to="/signup" className="login-signup-link">
-              Sign Up
-            </Link>
-          </p>
-          <Social text="Login" />
+            <p className="forgot-password--text">
+              Forgot your password?{" "}
+              <span onClick={handleResetEmail}>Reset your password</span>
+            </p>
+            <p className="login-signup-text">
+              Don't have an account?{" "}
+              <Link to="/signup" className="login-signup-link">
+                Sign Up
+              </Link>
+            </p>
+            <Social text="Login" />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

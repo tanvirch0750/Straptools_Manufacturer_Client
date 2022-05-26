@@ -7,6 +7,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 import auth from "../../Firebase.init";
 import useToken from "../../hooks/useToken";
@@ -68,64 +69,69 @@ const SignUp = () => {
   }
 
   return (
-    <section className="signup">
-      <div className="container signup-inner">
-        <div className="form-container">
-          <h2>Registration</h2>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control">
-              <label htmlFor="name">Your Name:</label>
+    <>
+      <Header />
+      <section className="signup">
+        <div className="container signup-inner">
+          <div className="form-container">
+            <h2>Registration</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-control">
+                <label htmlFor="name">Your Name:</label>
+                <input
+                  {...register("name")}
+                  type="name"
+                  placeholder="Enter your name"
+                />
+                <p className="error-message">{errors.name?.message}</p>
+              </div>
+              <div className="form-control">
+                <label htmlFor="name">Your email:</label>
+                <input
+                  {...register("email")}
+                  type="email"
+                  placeholder="Enter your email"
+                />
+                <p className="error-message">{errors.email?.message}</p>
+              </div>
+              <div className="form-control">
+                <label htmlFor="name">Your password:</label>
+                <input
+                  {...register("password")}
+                  type="password"
+                  placeholder="Enter your password"
+                />
+                <p className="error-message">{errors.password?.message}</p>
+              </div>
+              <div className="form-control">
+                <label htmlFor="name">Confirm your password:</label>
+                <input
+                  {...register("confirmPassword")}
+                  type="password"
+                  placeholder="Confirm your password"
+                />
+                <p className="error-message">
+                  {errors.confirmPassword?.message}
+                </p>
+              </div>
+              {customError && <p className="error-message">{customError}</p>}
               <input
-                {...register("name")}
-                type="name"
-                placeholder="Enter your name"
+                type="submit"
+                className="btn btn-full form-btn"
+                value="Signup"
               />
-              <p className="error-message">{errors.name?.message}</p>
-            </div>
-            <div className="form-control">
-              <label htmlFor="name">Your email:</label>
-              <input
-                {...register("email")}
-                type="email"
-                placeholder="Enter your email"
-              />
-              <p className="error-message">{errors.email?.message}</p>
-            </div>
-            <div className="form-control">
-              <label htmlFor="name">Your password:</label>
-              <input
-                {...register("password")}
-                type="password"
-                placeholder="Enter your password"
-              />
-              <p className="error-message">{errors.password?.message}</p>
-            </div>
-            <div className="form-control">
-              <label htmlFor="name">Confirm your password:</label>
-              <input
-                {...register("confirmPassword")}
-                type="password"
-                placeholder="Confirm your password"
-              />
-              <p className="error-message">{errors.confirmPassword?.message}</p>
-            </div>
-            {customError && <p className="error-message">{customError}</p>}
-            <input
-              type="submit"
-              className="btn btn-full form-btn"
-              value="Signup"
-            />
-          </form>
-          <p className="login-signup-text">
-            Already have an account?{" "}
-            <Link to="/login" className="login-signup-link">
-              Login
-            </Link>
-          </p>
-          <Social text="Signup" />
+            </form>
+            <p className="login-signup-text">
+              Already have an account?{" "}
+              <Link to="/login" className="login-signup-link">
+                Login
+              </Link>
+            </p>
+            <Social text="Signup" />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

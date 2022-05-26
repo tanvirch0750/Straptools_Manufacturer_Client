@@ -15,7 +15,7 @@ const ConfirmationBox = ({ setOpen, deleteFunction, confirmation }) => {
       <div className="cb-container">
         {confirmation && (
           <div className="cb-title">
-            <h3>Are you sure you want to cancel this item?</h3>
+            <h3>Are you sure you want to cancel or delete this item?</h3>
           </div>
         )}
 

@@ -1,10 +1,13 @@
 import React from "react";
 
 const Welcome = () => {
+  // const [user] = useAuthState(auth);
   return (
-    <div>
-      <h2 style={{ zIndex: "-1" }}>Welocome to dashboard</h2>
-    </div>
+    <section style={{ zIndex: "-1" }} className="dashboaard-welcome">
+      <div>
+        <h2>Welocome to dashboard</h2>
+      </div>
+    </section>
   );
 };
 

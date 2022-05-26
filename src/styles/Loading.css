@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 8rem);
+  height: calc(100vh);
   background-color: var(--color-primary);
   background-image: linear-gradient(
     180deg,
@@ -22,7 +22,7 @@
   width: 3vw;
   height: 3vw;
   border-radius: 100%;
-  margin: 2vw;
+  margin: 1vw;
   background-image: linear-gradient(
     145deg,
     rgba(255, 255, 255, 0.5) 0%,
@@ -31,21 +31,21 @@
   animation: bounce 1.5s 0.5s linear infinite;
 }
 .yellow {
-  background-color: var(--yellow);
+  background-color: var(--color-secondary);
 }
 
 .red {
-  background-color: var(--red);
+  background-color: var(--color-secondary);
   animation-delay: 0.1s;
 }
 
 .blue {
-  background-color: var(--blue);
+  background-color: var(--color-secondary);
   animation-delay: 0.2s;
 }
 
 .violet {
-  background-color: var(--violet);
+  background-color: var(--color-secondary);
   animation-delay: 0.3s;
 }
 

@@ -10,6 +10,7 @@ const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
   const [active, setActive] = useState(false);
   const [admin] = useAdmin(user);
+
   return (
     <>
       <Header />
