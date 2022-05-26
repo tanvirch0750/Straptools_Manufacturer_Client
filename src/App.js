@@ -18,6 +18,7 @@ import Blogs from "./Pages/Blogs";
 import Home from "./Pages/Home";
 import MyPortfolio from "./Pages/MyPortfolio";
 import NotFound from "./Pages/NotFound";
+import Products from "./Pages/Products";
 import Purchase from "./Pages/Purchase";
 import "./styles/Form.css";
 import "./styles/Table.css";
@@ -27,6 +28,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/products" element={<Products />}></Route>
         <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/portfolio" element={<MyPortfolio />}></Route>
         <Route path="/login" element={<Login />}></Route>

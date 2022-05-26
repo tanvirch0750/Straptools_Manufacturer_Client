@@ -1,0 +1,16 @@
+.products-page {
+  padding: 4.8rem 0;
+}
+
+.all-products {
+  margin: 6.4rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 3.2rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .all-products {
+    margin: 4.8rem 0;
+  }
+}
