@@ -86,6 +86,7 @@ const MyOrders = () => {
                 <th>Price</th>
                 <th>Total</th>
                 <th>Payment</th>
+                <th>Status</th>
                 <th>Cancel</th>
               </tr>
             </thead>
@@ -111,6 +112,20 @@ const MyOrders = () => {
                         <p>Paid - Trx id:</p>
                         <p>{order.transactionId}</p>
                       </>
+                    )}
+                  </td>
+                  <td data-lebel="Status">
+                    {/* {order.approved && order.paid ? (
+                      <span className="paid-pending">Shipped</span>
+                    ) : (
+                      <span className="paid-pending">Pending</span>
+                    )} */}
+                    {order.approved ? (
+                      <span className="paid-pending">Shipped</span>
+                    ) : !order.paid ? (
+                      <span className="paid-pending"></span>
+                    ) : (
+                      <span className="paid-pending">Pending</span>
                     )}
                   </td>
                   <td data-lebel="Delete">
