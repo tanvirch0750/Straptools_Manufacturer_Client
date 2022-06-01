@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className="header">
       <nav className={`nav ${open ? "open" : ""}`}>
-        <div className="container nav-inner">
+        <div className="nav-inner">
           <div className="nav-logo">
             <h2>
               <Link to="/">STRAPTOOLS</Link>
@@ -25,12 +25,6 @@ const Header = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
-            {/* <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li> */}
             <li>
               <Link to="/products">Products</Link>
             </li>

@@ -76,30 +76,44 @@ const MyProfile = () => {
         </div>
         <div className="my-profile-inner">
           <div className="my-profile-details">
-            <div className="profile-box">
-              <h3>Name: {singleUser.name}</h3>
+            <div>
+              <div className="profile-box">
+                <h3>
+                  <span>Name:</span> {singleUser.name}
+                </h3>
+              </div>
+              <div className="profile-box">
+                <h3>
+                  <span>Email:</span> {singleUser.email}
+                </h3>
+              </div>
+              <div className="profile-box">
+                <h3>
+                  <span>Location:</span> {singleUser.location}
+                </h3>
+              </div>
+              <div className="profile-box">
+                <h3>
+                  <span>Education:</span> {singleUser.education}
+                </h3>
+              </div>
+              <div className="profile-box">
+                <h3>
+                  <span>Linkedin:</span>{" "}
+                  <a href={singleUser.linkedin}>Profile</a>
+                </h3>
+              </div>
+              <div className="profile-box">
+                <h3>
+                  <span>Phone Phone:</span> {singleUser.phone}
+                </h3>
+              </div>
             </div>
-            <div className="profile-box">
-              <h3>Email: {singleUser.email}</h3>
-            </div>
+
+            <img src={singleUser.image} alt="" />
           </div>
 
-          <div className="my-profile-others">
-            <div className="profile-box">
-              <h3>Location: {singleUser.location}</h3>
-            </div>
-            <div className="profile-box">
-              <h3>Education: {singleUser.education}</h3>
-            </div>
-            <div className="profile-box">
-              <h3>
-                Linkedin Profile: <a href={singleUser.linkedin}>Profile</a>
-              </h3>
-            </div>
-            <div className="profile-box">
-              <h3>Phone Phone: {singleUser.phone}</h3>
-            </div>
-          </div>
+          <div className="my-profile-others"></div>
         </div>
         <div className="update-profile-inner">
           <h3>Update Profile</h3>

@@ -2,7 +2,8 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { IoAppsOutline, IoLogOutOutline } from "react-icons/io5";
-import { Link, matchPath, useLocation } from "react-router-dom";
+import { useQuery } from "react-query";
+import { Link, matchPath, useLocation, useNavigate } from "react-router-dom";
 import avatar from "../assets/images/icons/avatar.png";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
@@ -16,9 +17,31 @@ const NavProfile = () => {
     signOut(auth);
   };
 
+  const navigate = useNavigate();
+
   const toggleProfile = () => {
     setProfileToggle(!profileToggle);
   };
+
+  const {
+    data: singleUser,
+    isLoading,
+    refetch,
+  } = useQuery(["users", user.email], () =>
+    fetch(`https://polar-tundra-61708.herokuapp.com/users/${user.email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        localStorage.removeItem("accessToken");
+        signOut(auth);
+        navigate("/");
+      }
+      return res.json();
+    })
+  );
 
   useEffect(() => {
     setProfile(user?.photoURL);
@@ -29,14 +52,14 @@ const NavProfile = () => {
 
   const dashboardCss = isDashboardPath && "dash-profile-menu";
 
-  if (loading) {
+  if (loading || isLoading) {
     return <Loading />;
   }
 
   return (
     <div>
       <div className="profile" onClick={toggleProfile}>
-        <img src={profile || avatar} alt="avatar" />
+        <img src={singleUser.image || profile || avatar} alt="avatar" />
 
         <div
           className={`profile-menu ${dashboardCss}`}
@@ -46,7 +69,7 @@ const NavProfile = () => {
               : { visibility: "hidden", opacity: "0" }
           }
         >
-          <h4>{user?.displayName}</h4>
+          <h4>{singleUser.name || user?.displayName}</h4>
           <ul>
             <li>
               <IoAppsOutline className="profile-icon" />

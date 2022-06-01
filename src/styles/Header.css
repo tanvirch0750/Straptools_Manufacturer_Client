@@ -5,10 +5,9 @@
 }
 .nav {
   height: 7.2rem;
-  /* background-color: #ebf5f0; */
-  background-color: #e6eaed;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 0 3.2rem;
 }
 
 .nav-inner {
