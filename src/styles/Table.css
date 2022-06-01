@@ -37,6 +37,8 @@
 }
 .table-btn.btn {
   padding: 0;
+  border: 1px solid transparent;
+  font-weight: 500;
 }
 
 .table-danger-btn {

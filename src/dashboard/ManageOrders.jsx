@@ -1,15 +1,16 @@
 import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import ConfirmationBox from "../components/ConfirmationBox";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
 
+const MySwal = withReactContent(Swal);
+
 const ManageOrders = () => {
-  const [open, setOpen] = useState(false);
-  const [deleteId, setDeleteId] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -49,27 +50,34 @@ const ManageOrders = () => {
       });
   };
 
-  const handleDeleteFunction = () => {
-    fetch(`https://polar-tundra-61708.herokuapp.com/order/${deleteId}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount) {
-          toast.success("Order cancelled succfully");
-          refetch();
-        } else {
-          toast.error("Something went wrong");
-        }
-      });
-  };
-
-  const handleDelete = (id) => {
-    setOpen(true);
-    setDeleteId(id);
+  const deleteOrder = (id) => {
+    MySwal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://polar-tundra-61708.herokuapp.com/order/${id}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              refetch();
+            } else {
+              toast.error("Something went wrong");
+            }
+          });
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
   };
 
   if (isLoading) {
@@ -77,14 +85,6 @@ const ManageOrders = () => {
   }
   return (
     <>
-      {open && (
-        <ConfirmationBox
-          setOpen={setOpen}
-          deleteFunction={handleDeleteFunction}
-          confirmation={true}
-        />
-      )}
-
       <section className="manage-orders">
         <div className="section-heading">
           <h2>Manage Orders</h2>
@@ -142,7 +142,7 @@ const ManageOrders = () => {
                   <td data-lebel="Delete">
                     <button
                       className="btn table-btn table-danger-btn"
-                      onClick={() => handleDelete(order._id)}
+                      onClick={() => deleteOrder(order._id)}
                       disabled={order.paid}
                     >
                       Delete

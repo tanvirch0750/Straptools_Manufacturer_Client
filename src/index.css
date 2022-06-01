@@ -75,6 +75,10 @@ html {
   font-size: 62.5%;
 }
 
+.swal2-container.swal2-center > .swal2-popup {
+  font-size: 1.6rem;
+}
+
 /* .Toastify__toast-body {
   font-size: 1.6rem !important;
   color: #64ffda;

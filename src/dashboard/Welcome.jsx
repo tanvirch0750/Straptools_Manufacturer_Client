@@ -12,7 +12,7 @@ const Welcome = () => {
   return (
     <section style={{ zIndex: "-1" }} className="dashboaard-welcome">
       <div>
-        <h2>Welocome to dashboard</h2>
+        <h2>Welocome to Straptools dashboard</h2>
         {admin && (
           <button
             className="btn btn-full"

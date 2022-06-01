@@ -4,8 +4,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import Loading from "../components/Loading";
 import auth from "../Firebase.init";
+
+const MySwal = withReactContent(Swal);
 
 const AllUsers = () => {
   const navigate = useNavigate();
@@ -57,6 +61,36 @@ const AllUsers = () => {
       });
   };
 
+  const deleteUser = (email) => {
+    MySwal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://polar-tundra-61708.herokuapp.com/users/${email}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              refetch();
+            } else {
+              toast.error("Something went wrong");
+            }
+          });
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+  };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -72,6 +106,7 @@ const AllUsers = () => {
             <tr>
               <th></th>
               <th>Email</th>
+              <th>Name</th>
               <th>Role</th>
               <th>Make Admin</th>
               <th>Delete</th>
@@ -82,6 +117,7 @@ const AllUsers = () => {
               <tr key={user._id}>
                 <td data-lebel="">{idx + 1}</td>
                 <td data-lebel="Email">{user.email}</td>
+                <td data-lebel="Email">{user.name}</td>
                 <td data-lebel="Quantity">
                   {user.role === "admin" ? "admin" : "user"}
                 </td>
@@ -96,7 +132,12 @@ const AllUsers = () => {
                   )}
                 </td>
                 <td data-lebel="Delete">
-                  <button className="btn table-btn">Delete</button>
+                  <button
+                    className="btn table-btn table-danger-btn"
+                    onClick={() => deleteUser(user.email)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
