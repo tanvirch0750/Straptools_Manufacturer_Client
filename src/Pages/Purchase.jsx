@@ -133,7 +133,13 @@ const Purchase = () => {
                   <h3>Full Description:</h3>
                   <p>{product.fullDescription}</p>
                 </div>
+                <div className="description-img">
+                  <img src={product.image} alt="" />
+                </div>
+              </div>
+              <div className="purchase-description-content">
                 <div className="purchase-content">
+                  <h3>Product Status:</h3>
                   <ul>
                     <li>
                       Quantity: <span>{product.quantity}</span>
@@ -152,11 +158,6 @@ const Purchase = () => {
                       Category: <span>{product.category}</span>
                     </li>
                   </ul>
-                </div>
-              </div>
-              <div className="purchase-description-content">
-                <div className="description-img">
-                  <img src={product.image} alt="" />
                 </div>
 
                 <div className="purchase-product">
