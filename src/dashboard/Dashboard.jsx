@@ -43,6 +43,11 @@ const Dashboard = () => {
               </Link>
             )}
             {admin && (
+              <Link className="menu-item" to="/dashboard/allReviews">
+                All Reviews
+              </Link>
+            )}
+            {admin && (
               <Link className="menu-item" to="/dashboard/manageOrders">
                 Manage Orders
               </Link>

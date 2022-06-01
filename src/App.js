@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddProducts from "./dashboard/AddProducts";
 import AddReview from "./dashboard/AddReview";
+import AllReviews from "./dashboard/AllReviews";
 import AllUsers from "./dashboard/AllUsers";
 import Dashboard from "./dashboard/Dashboard";
 import ManageOrders from "./dashboard/ManageOrders";
@@ -82,6 +83,14 @@ function App() {
             element={
               <RequireAdmin>
                 <AllUsers />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="allReviews"
+            element={
+              <RequireAdmin>
+                <AllReviews />
               </RequireAdmin>
             }
           ></Route>

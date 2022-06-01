@@ -42,5 +42,3 @@ const Reviews = () => {
 };
 
 export default Reviews;
-
-// Most importantly SCG strives to understand overall project objectives and offer practical and effective solutions. Their commitment to delivering exceptional service is evident in every task they take on.
