@@ -63,7 +63,9 @@
   padding: 2rem 1rem;
   background-color: var(--color-primary);
   z-index: 1000;
-  position: relative;
+  position: sticky;
+  top: 7.2rem;
+  height: calc(100vh - 7.2rem);
 }
 
 .sidebar h3 {
