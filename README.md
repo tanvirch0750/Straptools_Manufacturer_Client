@@ -1,7 +1,7 @@
 # Straptools - Tools Manufacturer company
 
 - Live website link [Straptools](https://straptools-420cd.web.app/)
-- Server Side github link [Straptools Server Github](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-tanvirch0750)
+- Server Side github link [Straptools Server Github](https://github.com/tanvirch0750/Straptools_Manufacturer_Server)
 - Server Side heroku link [Strap Tools Server Heroku](https://polar-tundra-61708.herokuapp.com/)
 
 ## Website description
