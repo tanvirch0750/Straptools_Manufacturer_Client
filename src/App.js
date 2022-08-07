@@ -1,30 +1,31 @@
-import { Route, Routes } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import AddProducts from "./dashboard/AddProducts";
-import AddReview from "./dashboard/AddReview";
-import AllReviews from "./dashboard/AllReviews";
-import AllUsers from "./dashboard/AllUsers";
-import Dashboard from "./dashboard/Dashboard";
-import ManageOrders from "./dashboard/ManageOrders";
-import ManageProducts from "./dashboard/ManageProducts";
-import MyOrders from "./dashboard/MyOrders";
-import MyProfile from "./dashboard/MyProfile";
-import Payment from "./dashboard/Payment";
-import Welcome from "./dashboard/Welcome";
-import Login from "./Pages/Authentication/Login";
-import RequireAdmin from "./Pages/Authentication/RequireAdmin";
-import RequireAuth from "./Pages/Authentication/RequireAuth";
-import RequireUser from "./Pages/Authentication/RequireUser";
-import Signup from "./Pages/Authentication/Signup";
-import Blogs from "./Pages/Blogs";
-import Home from "./Pages/Home";
-import MyPortfolio from "./Pages/MyPortfolio";
-import NotFound from "./Pages/NotFound";
-import Products from "./Pages/Products";
-import Purchase from "./Pages/Purchase";
-import "./styles/Form.css";
-import "./styles/Table.css";
+import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AddProducts from './dashboard/AddProducts';
+import AddReview from './dashboard/AddReview';
+import AllReviews from './dashboard/AllReviews';
+import AllUsers from './dashboard/AllUsers';
+import Dashboard from './dashboard/Dashboard';
+import ManageOrders from './dashboard/ManageOrders';
+import ManageProducts from './dashboard/ManageProducts';
+import MyOrders from './dashboard/MyOrders';
+import MyProfile from './dashboard/MyProfile';
+import Payment from './dashboard/Payment';
+import ProductDetails from './dashboard/ProductDetails';
+import Welcome from './dashboard/Welcome';
+import Login from './Pages/Authentication/Login';
+import RequireAdmin from './Pages/Authentication/RequireAdmin';
+import RequireAuth from './Pages/Authentication/RequireAuth';
+import RequireUser from './Pages/Authentication/RequireUser';
+import Signup from './Pages/Authentication/Signup';
+import Blogs from './Pages/Blogs';
+import Home from './Pages/Home';
+import MyPortfolio from './Pages/MyPortfolio';
+import NotFound from './Pages/NotFound';
+import Products from './Pages/Products';
+import Purchase from './Pages/Purchase';
+import './styles/Form.css';
+import './styles/Table.css';
 
 function App() {
   return (
@@ -99,6 +100,14 @@ function App() {
             element={
               <RequireAdmin>
                 <ManageOrders />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="productDetails/:id"
+            element={
+              <RequireAdmin>
+                <ProductDetails />
               </RequireAdmin>
             }
           ></Route>

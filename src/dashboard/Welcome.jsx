@@ -1,35 +1,38 @@
-import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
-import auth from "../Firebase.init";
-import useAdmin from "../hooks/useAdmin";
-import "../styles/Welcome.css";
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import auth from '../Firebase.init';
+import useAdmin from '../hooks/useAdmin';
+import '../styles/Welcome.css';
+import ManageOrders from './ManageOrders';
+import MyOrders from './MyOrders';
 
 const Welcome = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   const navigate = useNavigate();
   return (
-    <section style={{ zIndex: "-1" }} className="dashboaard-welcome">
-      <div>
-        <h2>Welocome to Straptools dashboard</h2>
+    <section className="dashboaard-welcome">
+      <>
         {admin && (
-          <button
-            className="btn btn-full"
-            onClick={() => navigate("/dashboard/manageOrders")}
-          >
-            Manage Orders
-          </button>
+          <ManageOrders />
+          // <button
+          //   className="btn btn-full"
+          //   onClick={() => navigate("/dashboard/manageOrders")}
+          // >
+          //   Manage Orders
+          // </button>
         )}
         {!admin && (
-          <button
-            className="btn btn-full"
-            onClick={() => navigate("/dashboard/myOrders")}
-          >
-            My Orders
-          </button>
+          <MyOrders />
+          // <button
+          //   className="btn btn-full"
+          //   onClick={() => navigate("/dashboard/myOrders")}
+          // >
+          //   My Orders
+          // </button>
         )}
-      </div>
+      </>
     </section>
   );
 };

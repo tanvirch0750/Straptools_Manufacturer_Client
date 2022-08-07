@@ -1,12 +1,12 @@
-import { signOut } from "firebase/auth";
-import React from "react";
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import Loading from "../components/Loading";
-import auth from "../Firebase.init";
+import { signOut } from 'firebase/auth';
+import React from 'react';
+import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import Loading from '../components/Loading';
+import auth from '../Firebase.init';
 
 const MySwal = withReactContent(Swal);
 
@@ -17,17 +17,17 @@ const ManageProducts = () => {
     data: products,
     isLoading,
     refetch,
-  } = useQuery("allProducts", () =>
-    fetch("https://polar-tundra-61708.herokuapp.com/products", {
-      method: "GET",
+  } = useQuery('allProducts', () =>
+    fetch('https://polar-tundra-61708.herokuapp.com/products', {
+      method: 'GET',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
     }).then((res) => {
       if (res.status === 401 || res.status === 403) {
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem('accessToken');
         signOut(auth);
-        navigate("/");
+        navigate('/');
       }
       return res.json();
     })
@@ -35,19 +35,19 @@ const ManageProducts = () => {
 
   const deleteProduct = (id) => {
     MySwal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`https://polar-tundra-61708.herokuapp.com/products/${id}`, {
-          method: "DELETE",
+          method: 'DELETE',
           headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
         })
           .then((res) => res.json())
@@ -55,10 +55,10 @@ const ManageProducts = () => {
             if (data.deletedCount) {
               refetch();
             } else {
-              toast.error("Something went wrong");
+              toast.error('Something went wrong');
             }
           });
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
       }
     });
   };
@@ -100,7 +100,12 @@ const ManageProducts = () => {
                     <button className="btn table-btn">Update</button>
                   </td>
                   <td data-lebel="Details">
-                    <button className="btn table-btn table-details-btn">
+                    <button
+                      className="btn table-btn table-details-btn"
+                      onClick={() =>
+                        navigate(`/dashboard/productDetails/${product._id}`)
+                      }
+                    >
                       Details
                     </button>
                   </td>
