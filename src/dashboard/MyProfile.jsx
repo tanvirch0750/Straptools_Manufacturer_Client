@@ -1,13 +1,13 @@
-import { signOut } from "firebase/auth";
-import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useForm } from "react-hook-form";
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import Loading from "../components/Loading";
-import auth from "../Firebase.init";
-import "../styles/MyProfile.css";
+import { signOut } from 'firebase/auth';
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Loading from '../components/Loading';
+import auth from '../Firebase.init';
+import '../styles/MyProfile.css';
 
 const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
@@ -23,21 +23,23 @@ const MyProfile = () => {
     data: singleUser,
     isLoading,
     refetch,
-  } = useQuery(["users", user.email], () =>
+  } = useQuery(['users', user.email], () =>
     fetch(`https://polar-tundra-61708.herokuapp.com/users/${user.email}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
     }).then((res) => {
       if (res.status === 401 || res.status === 403) {
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem('accessToken');
         signOut(auth);
-        navigate("/");
+        navigate('/');
       }
       return res.json();
     })
   );
+
+  console.log(user);
 
   const onSubmit = (data) => {
     const findalData = {
@@ -48,10 +50,10 @@ const MyProfile = () => {
     fetch(
       `https://polar-tundra-61708.herokuapp.com/user/profile/${user.email}`,
       {
-        method: "PUT",
+        method: 'PUT',
         headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          'content-type': 'application/json',
+          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         },
         body: JSON.stringify(findalData),
       }
@@ -68,6 +70,8 @@ const MyProfile = () => {
     return <Loading />;
   }
 
+  console.log(singleUser);
+
   return (
     <section className="my-profile">
       <div className="container">
@@ -79,7 +83,8 @@ const MyProfile = () => {
             <div>
               <div className="profile-box">
                 <h3>
-                  <span>Name:</span> {singleUser.name}
+                  <span>Name:</span>{' '}
+                  {singleUser.name || user.displayName || 'No name found'}
                 </h3>
               </div>
               <div className="profile-box">
@@ -99,7 +104,7 @@ const MyProfile = () => {
               </div>
               <div className="profile-box">
                 <h3>
-                  <span>Linkedin:</span>{" "}
+                  <span>Linkedin:</span>{' '}
                   <a href={singleUser.linkedin}>Profile</a>
                 </h3>
               </div>
@@ -110,7 +115,11 @@ const MyProfile = () => {
               </div>
             </div>
 
-            <img src={singleUser.image} alt="" />
+            {singleUser.image ? (
+              <img src={singleUser.image} alt="" />
+            ) : (
+              'No Image found'
+            )}
           </div>
 
           <div className="my-profile-others"></div>
@@ -123,8 +132,8 @@ const MyProfile = () => {
                 <div className="form-control">
                   <label htmlFor="location">Your Location:</label>
                   <input
-                    {...register("location", {
-                      required: "Enter your location",
+                    {...register('location', {
+                      required: 'Enter your location',
                     })}
                     id="location"
                     type="text"
@@ -135,8 +144,8 @@ const MyProfile = () => {
                 <div className="form-control">
                   <label htmlFor="education">Your Education:</label>
                   <input
-                    {...register("education", {
-                      required: "Enter your education",
+                    {...register('education', {
+                      required: 'Enter your education',
                     })}
                     id="education"
                     type="text"
@@ -147,8 +156,8 @@ const MyProfile = () => {
                 <div className="form-control">
                   <label htmlFor="image">Your image link:</label>
                   <input
-                    {...register("image", {
-                      required: "Enter your image link",
+                    {...register('image', {
+                      required: 'Enter your image link',
                     })}
                     type="text"
                     placeholder="Enter your image link"
@@ -158,8 +167,8 @@ const MyProfile = () => {
                 <div className="form-control">
                   <label htmlFor="phone">Your Phone:</label>
                   <input
-                    {...register("phone", {
-                      required: "Enter your phone number",
+                    {...register('phone', {
+                      required: 'Enter your phone number',
                     })}
                     type="number"
                     placeholder="Enter your phone number"
@@ -169,8 +178,8 @@ const MyProfile = () => {
                 <div className="form-control">
                   <label htmlFor="linkedin">Linkedin Profile Link:</label>
                   <input
-                    {...register("linkedin", {
-                      required: "Enter your linkedin profile link",
+                    {...register('linkedin', {
+                      required: 'Enter your linkedin profile link',
                     })}
                     type="text"
                     placeholder="Enter item supplier name"

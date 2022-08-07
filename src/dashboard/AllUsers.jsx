@@ -1,13 +1,13 @@
-import { signOut } from "firebase/auth";
-import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import Loading from "../components/Loading";
-import auth from "../Firebase.init";
+import { signOut } from 'firebase/auth';
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import Loading from '../components/Loading';
+import auth from '../Firebase.init';
 
 const MySwal = withReactContent(Swal);
 
@@ -19,17 +19,17 @@ const AllUsers = () => {
     data: users,
     isLoading,
     refetch,
-  } = useQuery("users", () =>
-    fetch("https://polar-tundra-61708.herokuapp.com/users", {
-      method: "GET",
+  } = useQuery('users', () =>
+    fetch('https://polar-tundra-61708.herokuapp.com/users', {
+      method: 'GET',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
     }).then((res) => {
       if (res.status === 401 || res.status === 403) {
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem('accessToken');
         signOut(auth);
-        navigate("/");
+        navigate('/');
       }
       return res.json();
     })
@@ -37,18 +37,18 @@ const AllUsers = () => {
 
   const makeAdmin = (email) => {
     fetch(`https://polar-tundra-61708.herokuapp.com/users/admin/${email}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
     })
       .then((res) => {
         console.log(res);
         if (res.status === 401 || res.status === 403) {
-          localStorage.removeItem("accessToken");
+          localStorage.removeItem('accessToken');
           signOut(auth);
-          navigate("/");
-          toast.error("Make admin attempt fail");
+          navigate('/');
+          toast.error('Make admin attempt fail');
         }
         return res.json();
       })
@@ -56,26 +56,26 @@ const AllUsers = () => {
         console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
-          toast.success("Successfully made an admin");
+          toast.success('Successfully made an admin');
         }
       });
   };
 
   const deleteUser = (email) => {
     MySwal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`https://polar-tundra-61708.herokuapp.com/users/${email}`, {
-          method: "DELETE",
+          method: 'DELETE',
           headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
         })
           .then((res) => res.json())
@@ -83,10 +83,10 @@ const AllUsers = () => {
             if (data.deletedCount) {
               refetch();
             } else {
-              toast.error("Something went wrong");
+              toast.error('Something went wrong');
             }
           });
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
       }
     });
   };
@@ -117,12 +117,12 @@ const AllUsers = () => {
               <tr key={user._id}>
                 <td data-lebel="">{idx + 1}</td>
                 <td data-lebel="Email">{user.email}</td>
-                <td data-lebel="Email">{user.name}</td>
+                <td data-lebel="Name">{user.name}</td>
                 <td data-lebel="Quantity">
-                  {user.role === "admin" ? "admin" : "user"}
+                  {user.role === 'admin' ? 'admin' : 'user'}
                 </td>
                 <td data-lebel="Make Admin">
-                  {user.role !== "admin" && (
+                  {user.role !== 'admin' && (
                     <button
                       className="btn table-btn"
                       onClick={() => makeAdmin(user.email)}

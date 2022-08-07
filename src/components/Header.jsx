@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { IoCloseOutline, IoMenuOutline } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
-import auth from "../Firebase.init";
-import "../styles/Header.css";
-import NavProfile from "./NavProfile";
+import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { IoCloseOutline, IoMenuOutline } from 'react-icons/io5';
+import { Link, useLocation } from 'react-router-dom';
+import auth from '../Firebase.init';
+import '../styles/Header.css';
+import NavProfile from './NavProfile';
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <nav className={`nav ${open ? "open" : ""}`}>
+      <nav className={`nav ${open ? 'open' : ''}`}>
         <div className="nav-inner">
           <div className="nav-logo">
             <h2>
@@ -31,9 +31,14 @@ const Header = () => {
             <li>
               <Link to="/blogs">Blogs</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/portfolio">My Portfolio</Link>
-            </li>
+            </li> */}
+            {user && (
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            )}
             {user && (
               <div className="header-profile-box">{user && <NavProfile />}</div>
             )}

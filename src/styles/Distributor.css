@@ -16,10 +16,10 @@
 .distributor-inner {
   background-image: linear-gradient(
       to right bottom,
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
     ),
-    url("../assets/images/banner/distributor-banner.webp");
+    url('../assets/images/banner/distributor-banner.webp');
 
   background-size: cover;
   background-position: center;
