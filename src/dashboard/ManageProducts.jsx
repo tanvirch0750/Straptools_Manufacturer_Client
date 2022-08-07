@@ -97,7 +97,14 @@ const ManageProducts = () => {
                   <td data-lebel="Category">{product.category}</td>
                   <td data-lebel="Min. Order">{product.minimumOrder}</td>
                   <td data-lebel="Update">
-                    <button className="btn table-btn">Update</button>
+                    <button
+                      className="btn table-btn"
+                      onClick={() =>
+                        navigate(`/dashboard/updateProduct/${product._id}`)
+                      }
+                    >
+                      Update
+                    </button>
                   </td>
                   <td data-lebel="Details">
                     <button

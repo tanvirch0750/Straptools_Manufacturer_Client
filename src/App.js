@@ -12,6 +12,7 @@ import MyOrders from './dashboard/MyOrders';
 import MyProfile from './dashboard/MyProfile';
 import Payment from './dashboard/Payment';
 import ProductDetails from './dashboard/ProductDetails';
+import UpdateProduct from './dashboard/UpdateProduct';
 import Welcome from './dashboard/Welcome';
 import Login from './Pages/Authentication/Login';
 import RequireAdmin from './Pages/Authentication/RequireAdmin';
@@ -108,6 +109,14 @@ function App() {
             element={
               <RequireAdmin>
                 <ProductDetails />
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="updateProduct/:id"
+            element={
+              <RequireAdmin>
+                <UpdateProduct />
               </RequireAdmin>
             }
           ></Route>

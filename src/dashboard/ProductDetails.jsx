@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Loading from '../components/Loading';
 
@@ -7,6 +7,7 @@ import '../styles/Purchase.css';
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data: product, isLoading } = useQuery(['purchase', id], () =>
     fetch(`https://polar-tundra-61708.herokuapp.com/products/${id}`, {
@@ -60,6 +61,16 @@ const ProductDetails = () => {
                       Category: <span>{product.category}</span>
                     </li>
                   </ul>
+                </div>
+                <div>
+                  <button
+                    className="btn btn-full"
+                    onClick={() =>
+                      navigate(`/dashboard/updateProduct/${product._id}`)
+                    }
+                  >
+                    Update
+                  </button>
                 </div>
               </div>
             </div>

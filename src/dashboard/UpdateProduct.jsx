@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import { useNavigate, useParams } from 'react-router-dom';
+import Loading from '../components/Loading';
 import '../styles/AddProducts.css';
 
-const AddProducts = () => {
+const UpdateProduct = () => {
+  const [product, setProduct] = useState([]);
+  const [loadData, setLoadData] = useState(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -12,30 +17,62 @@ const AddProducts = () => {
     formState: { errors },
   } = useForm({});
 
-  const onSubmit = (data) => {
-    fetch('https://polar-tundra-61708.herokuapp.com/products', {
-      method: 'POST',
+  const { id } = useParams();
+
+  useEffect(() => {
+    setLoadData(true);
+    fetch(`https://polar-tundra-61708.herokuapp.com/products/${id}`, {
       headers: {
-        'content-type': 'application/json',
         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setLoadData(false);
+        setProduct(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    let defaultValues = {};
+    defaultValues.name = product.name;
+    defaultValues.availableQuantity = product.availableQuantity;
+    defaultValues.category = product.category;
+    defaultValues.image = product.image;
+    defaultValues.description = product.description;
+    defaultValues.fullDescription = product.fullDescription;
+    defaultValues.minimumOrder = product.minimumOrder;
+    defaultValues.pricePerUnit = product.pricePerUnit;
+    defaultValues.quantity = product.quantity;
+    reset({ ...defaultValues });
+  }, [product]);
+
+  const onSubmit = (data) => {
+    setLoadData(true);
+    // send data to the server
+    fetch(`https://polar-tundra-61708.herokuapp.com/products/${id}`, {
+      method: 'PUT',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        'content-type': 'application/json',
       },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) {
-          toast.success('Product added successfully');
-          reset();
-        } else {
-          toast.error('Product add attemt failed');
-        }
+        setLoadData(false);
+        navigate(`/dashboard/productDetails/${id}`);
       });
   };
+
+  if (loadData) {
+    return <Loading />;
+  }
 
   return (
     <section className="add-product">
       <div className="section-heading">
-        <h2>Add Product</h2>
+        <h2>Update Product: {product.name}</h2>
       </div>
       <div className="form-container">
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -148,7 +185,7 @@ const AddProducts = () => {
           <input
             type="submit"
             className="btn btn-full form-btn"
-            value="Add Product"
+            value="Update Product"
           />
         </form>
       </div>
@@ -156,4 +193,4 @@ const AddProducts = () => {
   );
 };
 
-export default AddProducts;
+export default UpdateProduct;
