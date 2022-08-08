@@ -8,4 +8,10 @@
 .admin-crendentials {
   text-align: center;
   margin-bottom: 2.4rem;
+  margin-top: 2.4rem;
+}
+
+.user-crendentials {
+  text-align: center;
+  margin-bottom: 2.4rem;
 }

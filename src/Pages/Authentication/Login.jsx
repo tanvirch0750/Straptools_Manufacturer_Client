@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
-} from "react-firebase-hooks/auth";
-import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Header from "../../components/Header";
-import Loading from "../../components/Loading";
-import auth from "../../Firebase.init";
-import useToken from "../../hooks/useToken";
-import "../../styles/Form.css";
-import "../../styles/Login.css";
-import Social from "./Social";
+} from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Header from '../../components/Header';
+import Loading from '../../components/Loading';
+import auth from '../../Firebase.init';
+import useToken from '../../hooks/useToken';
+import '../../styles/Form.css';
+import '../../styles/Login.css';
+import Social from './Social';
 
 const Login = () => {
-  const [customError, setCustomError] = useState("");
+  const [customError, setCustomError] = useState('');
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, errorReset] =
@@ -28,14 +28,14 @@ const Login = () => {
   const [token] = useToken(user);
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location?.state?.from?.pathname || "/";
+  const from = location?.state?.from?.pathname || '/';
 
   useEffect(() => {
     if (error) {
-      if (error.message.includes("auth/wrong-password")) {
-        setCustomError("Your password is wrong");
-      } else if (error.message.includes("auth/user-not-found")) {
-        setCustomError("Account not found with this email");
+      if (error.message.includes('auth/wrong-password')) {
+        setCustomError('Your password is wrong');
+      } else if (error.message.includes('auth/user-not-found')) {
+        setCustomError('Account not found with this email');
       } else {
         setCustomError(error.message);
       }
@@ -52,7 +52,7 @@ const Login = () => {
     }
   }, [token]);
 
-  const email = watch("email");
+  const email = watch('email');
   function validateEmail() {
     let validRegex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -80,6 +80,11 @@ const Login = () => {
         <div className="container login-inner">
           <div className="form-container">
             <h2>Login</h2>
+            <div className="user-crendentials">
+              <p>Please use this credentials to check user functionality:</p>
+              <p>Email: israk@madrid.com</p>
+              <p>Password: 123456</p>
+            </div>
             <div className="admin-crendentials">
               <p>Please use this credentials to check admin functionality:</p>
               <p>Email: tanvir0750@yahoo.com</p>
@@ -90,8 +95,8 @@ const Login = () => {
                 <label htmlFor="name">Your email:</label>
 
                 <input
-                  {...register("email", {
-                    required: "Please provide your email address",
+                  {...register('email', {
+                    required: 'Please provide your email address',
                   })}
                   type="email"
                   placeholder="Enter your email"
@@ -101,8 +106,8 @@ const Login = () => {
               <div className="form-control">
                 <label htmlFor="name">Your password:</label>
                 <input
-                  {...register("password", {
-                    required: "Please give your password",
+                  {...register('password', {
+                    required: 'Please give your password',
                   })}
                   type="password"
                   placeholder="Enter your password"
@@ -118,11 +123,11 @@ const Login = () => {
             </form>
 
             <p className="forgot-password--text">
-              Forgot your password?{" "}
+              Forgot your password?{' '}
               <span onClick={handleResetEmail}>Reset your password</span>
             </p>
             <p className="login-signup-text">
-              Don't have an account?{" "}
+              Don't have an account?{' '}
               <Link to="/signup" className="login-signup-link">
                 Sign Up
               </Link>
