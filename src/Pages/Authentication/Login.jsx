@@ -82,7 +82,7 @@ const Login = () => {
             <h2>Login</h2>
             <div className="admin-crendentials">
               <p>Please use this credentials to check admin functionality:</p>
-              <p>Email: tanvir.chowdhury.7575@gmail.com</p>
+              <p>Email: tanvir0750@yahoo.com</p>
               <p>Password: 123456</p>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
