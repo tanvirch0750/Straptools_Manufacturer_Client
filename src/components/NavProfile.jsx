@@ -1,18 +1,18 @@
-import { signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { IoAppsOutline, IoLogOutOutline } from "react-icons/io5";
-import { useQuery } from "react-query";
-import { Link, matchPath, useLocation, useNavigate } from "react-router-dom";
-import avatar from "../assets/images/icons/avatar.png";
-import Loading from "../components/Loading";
-import auth from "../Firebase.init";
-import "../styles/NavProfile.css";
+import { signOut } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { IoAppsOutline, IoLogOutOutline } from 'react-icons/io5';
+import { useQuery } from 'react-query';
+import { Link, matchPath, useLocation, useNavigate } from 'react-router-dom';
+import avatar from '../assets/images/icons/avatar.png';
+import Loading from '../components/Loading';
+import auth from '../Firebase.init';
+import '../styles/NavProfile.css';
 
 const NavProfile = () => {
   const [user, loading] = useAuthState(auth);
   const [profileToggle, setProfileToggle] = useState(false);
-  const [profile, setProfile] = useState("");
+  const [profile, setProfile] = useState('');
   const handleSignOut = () => {
     signOut(auth);
   };
@@ -27,30 +27,36 @@ const NavProfile = () => {
     data: singleUser,
     isLoading,
     refetch,
-  } = useQuery(["users", user.email], () =>
+  } = useQuery(['users', user.email], () =>
     fetch(`https://polar-tundra-61708.herokuapp.com/users/${user.email}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
       },
     }).then((res) => {
-      if (res.status === 401 || res.status === 403) {
-        localStorage.removeItem("accessToken");
-        signOut(auth);
-        navigate("/");
-      }
       return res.json();
     })
   );
+
+  useEffect(() => {
+    fetch(`https://polar-tundra-61708.herokuapp.com/users/${user.email}`, {
+      method: 'GET',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    }).then((res) => {
+      return res.json();
+    });
+  }, []);
 
   useEffect(() => {
     setProfile(user?.photoURL);
   }, [user]);
 
   const { pathname } = useLocation();
-  const isDashboardPath = matchPath("/dashboard/*", pathname);
+  const isDashboardPath = matchPath('/dashboard/*', pathname);
 
-  const dashboardCss = isDashboardPath && "dash-profile-menu";
+  const dashboardCss = isDashboardPath && 'dash-profile-menu';
 
   if (loading || isLoading) {
     return <Loading />;
@@ -65,8 +71,8 @@ const NavProfile = () => {
           className={`profile-menu ${dashboardCss}`}
           style={
             profileToggle
-              ? { visibility: "visible", opacity: "1" }
-              : { visibility: "hidden", opacity: "0" }
+              ? { visibility: 'visible', opacity: '1' }
+              : { visibility: 'hidden', opacity: '0' }
           }
         >
           <h4>{singleUser.name || user?.displayName}</h4>

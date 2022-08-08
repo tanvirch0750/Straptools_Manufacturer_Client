@@ -42,15 +42,15 @@ const Login = () => {
     }
   });
 
-  const onSubmit = async (dataa) => {
-    await signInWithEmailAndPassword(dataa.email, dataa.password);
-  };
-
   useEffect(() => {
     if (token) {
       navigate(from, { replace: true });
     }
   }, [token]);
+
+  const onSubmit = async (dataa) => {
+    await signInWithEmailAndPassword(dataa.email, dataa.password);
+  };
 
   const email = watch('email');
   function validateEmail() {
